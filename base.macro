@@ -1,0 +1,120 @@
+{% raw %}
+{% import "2.1/omni.macros" as omniMacros with context %}
+
+
+
+
+{% macro catalog_control_template(cssClass="control",type="default") %}
+<!-- Campos disponiveis no controlador -->
+  <!--
+      objeto={
+        'total':response.total,
+        'limit':response.limit,
+        'num_pages':response.num_pages,
+        'page':response.page,
+        'query':response.query,
+        'category':response.category,
+        'offset':response.offset
+        'offset_previous':response.offset_previous,
+        'offset_next':response.offset_next,
+        'hasPrevious':response.hasPrevious,
+        'hasNext':response.hasNext
+      }
+
+  Catalogo responde aos eventos:
+
+  "click .next_page"        : "next_page",
+  "click .append_next_page" : "append_next_page", #Cria um efeito de scroll infinito
+  "click .previus_page"     : "previus_page",
+  "click .reset_catalog"    : "reset_catalog"
+
+
+-->
+{% if type =="default" %}
+<div class="previus <%= (hasPrevious) ? 'show' : 'hidden' %>">
+<a class="previus_page"> Página anterior </a>
+</div>
+
+<div> Total de items encontrados: <%- total %>, mostrando página <%- page %> de  <%- num_pages %></div>
+
+
+<div class="next <%= (hasNext) ? 'show' : 'hidden' %>">
+<a class="next_page"> Próxima página </a>
+</div>
+
+
+
+<nav aria-label="page navigation">
+
+  <ul class="pagination">
+      <% _.each( _.range(0,total,limit), function(element, index, list) { %>
+       <li class="<%= (page == (index + 1)) ? 'active' : 'normal' %>"><a class="go_to_page " page-offset="<%= (limit * index) %>"><%= (index + 1) %>  </a></li>
+      <% } ) %>    
+    </ul>
+</nav>
+
+
+{% else %}
+
+<span> <b><%- total %></b></span>
+<span class="next <%= (hasNext) ? 'show' : 'hidden' %>">
+<a class="next_page"> Carregar mais </a>
+</span>
+
+{% endif %}
+
+{% endmacro %}
+
+
+{% macro ad_view_template(cssClass="default") %}
+
+    <div class="adView {{cssClass}} col-lg-1 col-xs-1 col-md-1">
+       <div class="thumbnail">
+      <a class="omni-page" href="#catalog/item/<%- adID %>">
+        <img width=128px height=128px src="/photos/best_image/<%- adID %>/128/" >
+      </a>
+      <div class="caption">
+        <div class="adInfo">
+          <h4>
+          <a class="omni-page" href="#catalog/item/<%- adID %>">
+          <%- adTitle %>
+          </a>
+          </h4>
+          <p><%- adBaitText %></p>
+        </div>
+        <p class="text-primary">
+        <h2 class="text-primary">
+          <%- itemPriceLabel %>
+        </h2>
+        </p>
+        <div>
+          <a class="btn btn-block btn-primary btn-lg buy_item" href="#catalog/additem/<%- adID %>" role="button">Adicionar ao pedido</a>
+          <a  class="btn btn-info btn-lg btn-block omni-page" href="#catalog/item/<%- adID %>">Ver mais detalhes</a>
+          <a class="btn btn-block btn-info shipping_calculator <%= (showShippingCalculator) ? 'show' : 'hidden'%> omni-page" href="#catalog/shipping-calc/<%- adID %>" >
+          Calcular frete
+          </a>
+        </div>
+      </div>
+    </div>
+    </div>
+{% endmacro %}
+
+{% macro containerCatalog(tipo="default",limit=25,titulo="Catalogo") %}
+
+{% if shop.catalogs[tipo] %}
+
+<div class="catalogs {{tipo}}">
+  {% for cat in shop.catalogs[tipo] %}
+  <h1>{{cat.catalogName}}</h1>
+  <h3>{{titulo}}</h3>
+  <div class="catalogContainer{{tipo}}" id="catalogContainer_{{cat.catalogID}}" omni-catalog-limit={{limit}}>
+           <div class="catalogControls"></div>
+           <div class="catalogContainer row"></div>
+  </div>
+  <hr>
+  {% endfor %}
+</div>
+{% endif %}
+{% endmacro %}
+
+{% endraw %}
