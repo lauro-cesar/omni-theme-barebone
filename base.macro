@@ -5,6 +5,7 @@
 
 
 {% macro catalog_control_template(cssClass="control",type="default") %}
+
 <!-- Campos disponiveis no controlador -->
   <!--
       objeto={
@@ -20,16 +21,14 @@
         'hasPrevious':response.hasPrevious,
         'hasNext':response.hasNext
       }
-
   Catalogo responde aos eventos:
 
   "click .next_page"        : "next_page",
   "click .append_next_page" : "append_next_page", #Cria um efeito de scroll infinito
   "click .previus_page"     : "previus_page",
   "click .reset_catalog"    : "reset_catalog"
-
-
 -->
+
 {% if type =="default" %}
 <div class="previus <%= (hasPrevious) ? 'show' : 'hidden' %>">
 <a class="previus_page"> Página anterior </a>

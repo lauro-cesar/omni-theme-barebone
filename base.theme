@@ -1,7 +1,5 @@
 {% raw %} {% import {% endraw %} "{{themeDir}}/base.macro" {% raw %} as myMacros with context %} {% endraw %}
-
-
-
+{% raw %} {% import {%endraw%} "{{themeDir}}/outros.macro" {% raw %} as outrosMacros with context %} {% endraw %}
 
 {% raw %}
 {% extends "2.1/omni.theme" %}
@@ -62,7 +60,13 @@
 
 {% block OMNI_DOCUMENT_BODY %}
 
+
+
+
 <div class="pages container-fluid" id="page-mainContent">
+
+{{ outrosMacros.meuH1(classeCSS="meutitulo",texto="Oi mundo aqui é meu macro") }}
+{{ outrosMacros.meuH1() }}
 
 <div class="searchEngine">
 <span class="input-group">
