@@ -1,6 +1,5 @@
-{% raw %} {% import {% endraw %} "{{themeDir}}/base.macro" {% raw %} as myMacros with context %} {% endraw %}
-{% raw %} {% import {%endraw%} "{{themeDir}}/outros.macro" {% raw %} as outrosMacros with context %} {% endraw %}
-
+{% raw %} {% import {% endraw %} "{{themeDir}}/templates_jinja.macro" {% raw %} as jinjaTemplates with context %} {% endraw %}
+{% raw %} {% import {% endraw %} "{{themeDir}}/templates_underscore.macro" {% raw %} as underscoreTemplates with context %} {% endraw %}
 {% raw %}
 {% extends "2.1/omni.theme" %}
 {% import "2.1/omni.macros" as omniMacros with context %}
@@ -24,34 +23,35 @@
 
 
 {%- block OMNI_DOCUMENT_BODY_HEADER -%}
+
 <script type="text/template" id="ad_view_template_top">
-{{myMacros.ad_view_template(cssClass="top")}}
+{{underscoreTemplates.ad_view_template(type="top",cssClass="top")}}
 </script>
 
 <script type="text/template" id="ad_view_template_default">
-{{myMacros.ad_view_template(cssClass="default")}}
+{{underscoreTemplates.ad_view_template(type="default",cssClass="default")}}
 </script>
 
 <script type="text/template" id="ad_view_template_bottom">
-{{myMacros.ad_view_template(cssClass="bottom")}}
+{{underscoreTemplates.ad_view_template(type="bottom",cssClass="bottom")}}
 </script>
 
 <script type="text/template" id="ad_view_template_left_sidebar">
-{{myMacros.ad_view_template(cssClass="left_sidebar")}}
+{{underscoreTemplates.ad_view_template(type="left_sidebar",cssClass="left_sidebar")}}
 </script>
 
 <script type="text/template" id="ad_view_template_right_sidebar">
-{{myMacros.ad_view_template(cssClass="right_sidebar")}}
+{{underscoreTemplates.ad_view_template(type="right_sidebar",cssClass="right_sidebar")}}
 </script>
 
 
 <script type="text/template" id="catalog_control_template_default">
-{{  myMacros.catalog_control_template(cssClass="default",type="default") }}
+{{  underscoreTemplates.catalog_control_template(cssClass="default",type="default") }}
 </script>
 
 
 <script type="text/template" id="catalog_control_template_top">
-{{  myMacros.catalog_control_template(cssClass="top",type="top") }}
+{{  underscoreTemplates.catalog_control_template(cssClass="top",type="top") }}
 </script>
 
 
@@ -65,8 +65,7 @@
 
 <div class="pages container-fluid" id="page-mainContent">
 
-{{ outrosMacros.meuH1(classeCSS="meutitulo",texto="Oi mundo aqui é meu macro") }}
-{{ outrosMacros.meuH1() }}
+
 
 <div class="searchEngine">
 <span class="input-group">
@@ -105,7 +104,6 @@
 </div>
 
 
-<!-- Meu catalogo com todos os produtos, a pesquisa funciona somente nesse catalogo -->
 <div class="pages" id="page-catalogPage">
 
     <div class="catalogContainerMain" id="catalogContainerMain" omni-catalog-limit=2>
@@ -119,35 +117,36 @@
 
 
 </div>
-<!-- End mainCatalog -->
-
 
 <div class="pages" id="page-homePage">
 	
-  <!-- Tipos de catalogos:
+  {# Tipos de catalogos:
   
   top
   default
   bottom
   left_sidebar
   right_sidebar
+
+  Catalogo exclusive, quando disponivel deve receber uma atenção especial.
+  
   exclusive : produtos vendidos com condições exclusivas para a loja, exemplo: Lojista publica no canal de venda da E-loja um produto com disconto exclisivo para o E-lojisa.
 
-  Esse catalogo, quando disponivel deve receber uma atenção especial.
+  
+  #}
 
--->
 
-{{ myMacros.containerCatalog(tipo="exclusive",limit=1,titulo="Catalogs Exclusivo da loja") }}
+{{ jinjaTemplates.containerCatalog(type="exclusive",limit=1,titulo="Catalogs Exclusivo da loja") }}
 
-{{ myMacros.containerCatalog(tipo="top",limit=1,titulo="Catalogs top") }}
+{{ jinjaTemplates.containerCatalog(type="top",limit=1,titulo="Catalogs top") }}
 
-{{ myMacros.containerCatalog(tipo="default",limit=1,titulo="Catalogs Padrão") }}
+{{ jinjaTemplates.containerCatalog(type="default",limit=1,titulo="Catalogs Padrão") }}
 
-{{ myMacros.containerCatalog(tipo="right_sidebar",limit=1,titulo="Catalogs Direita") }}
+{{ jinjaTemplates.containerCatalog(type="right_sidebar",limit=1,titulo="Catalogs Direita") }}
 
-{{ myMacros.containerCatalog(tipo="left_sidebar",limit=1,titulo="Catalogs Esquerda") }}
+{{ jinjaTemplates.containerCatalog(type="left_sidebar",limit=1,titulo="Catalogs Esquerda") }}
 
-{{ myMacros.containerCatalog(tipo="bottom",limit=1,titulo="Catalogs rodapé")}}
+{{ jinjaTemplates.containerCatalog(type="bottom",limit=1,titulo="Catalogs rodapé")}}
 
 </div>
 

@@ -1,8 +1,0 @@
-{% raw %}
-
-{% macro meuH1(classeCSS="titulo",texto="oi mundo") %}
-<h1 class="{{ classeCSS }}"> {{ texto }} </h1>
-{% endmacro %}
-
-
-{% endraw %}

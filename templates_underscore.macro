@@ -1,40 +1,46 @@
 {% raw %}
-{% import "2.1/omni.macros" as omniMacros with context %}
 
+{# Campos disponiveis para o controlador
 
+  objeto
+    'total':response.total,
+    'limit':response.limit,
+    'num_pages':response.num_pages,
+    'page':response.page,
+    'query':response.query,
+    'category':response.category,
+    'offset':response.offset
+    'offset_previous':response.offset_previous,
+    'offset_next':response.offset_next,
+    'hasPrevious':response.hasPrevious,
+    'hasNext':response.hasNext
+  
 
-
-{% macro catalog_control_template(cssClass="control",type="default") %}
-
-<!-- Campos disponiveis no controlador -->
-  <!--
-      objeto={
-        'total':response.total,
-        'limit':response.limit,
-        'num_pages':response.num_pages,
-        'page':response.page,
-        'query':response.query,
-        'category':response.category,
-        'offset':response.offset
-        'offset_previous':response.offset_previous,
-        'offset_next':response.offset_next,
-        'hasPrevious':response.hasPrevious,
-        'hasNext':response.hasNext
-      }
   Catalogo responde aos eventos:
 
   "click .next_page"        : "next_page",
-  "click .append_next_page" : "append_next_page", #Cria um efeito de scroll infinito
+  "click .append_next_page" : "append_next_page", #Para criar o efeito de scroll infinito
   "click .previus_page"     : "previus_page",
   "click .reset_catalog"    : "reset_catalog"
--->
+#}
+
+
+{#
+
+Template universal para o controlador do catalogo. Adicionado argumento type
+
+Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hidden', ou mudar a estratégia de mostrar os botoes..
+
+#}
+
+{% macro catalog_control_template(cssClass="control",type="default") %}
 
 {% if type =="default" %}
 <div class="previus <%= (hasPrevious) ? 'show' : 'hidden' %>">
 <a class="previus_page"> Página anterior </a>
 </div>
 
-<div> Total de items encontrados: <%- total %>, mostrando página <%- page %> de  <%- num_pages %></div>
+<div> Total encontrados: <%- total %>, mostrando página <%- page %> de  <%- num_pages %></div>
 
 
 <div class="next <%= (hasNext) ? 'show' : 'hidden' %>">
@@ -64,8 +70,13 @@
 
 {% endmacro %}
 
+{#
+Template universal para o anuncio do produto, adicionado argumento type.
+#}
 
-{% macro ad_view_template(cssClass="default") %}
+
+{% macro ad_view_template(cssClass="default",type="default") %}
+
 
     <div class="adView {{cssClass}} col-lg-1 col-xs-1 col-md-1">
        <div class="thumbnail">
@@ -98,22 +109,5 @@
     </div>
 {% endmacro %}
 
-{% macro containerCatalog(tipo="default",limit=25,titulo="Catalogo") %}
-
-{% if shop.catalogs[tipo] %}
-
-<div class="catalogs {{tipo}}">
-  {% for cat in shop.catalogs[tipo] %}
-  <h1>{{cat.catalogName}}</h1>
-  <h3>{{titulo}}</h3>
-  <div class="catalogContainer{{tipo}}" id="catalogContainer_{{cat.catalogID}}" omni-catalog-limit={{limit}}>
-           <div class="catalogControls"></div>
-           <div class="catalogContainer row"></div>
-  </div>
-  <hr>
-  {% endfor %}
-</div>
-{% endif %}
-{% endmacro %}
 
 {% endraw %}
