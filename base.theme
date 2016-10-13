@@ -6,16 +6,11 @@
 
 
 
+{%- block OMNI_EXTRA_CSS_HEADER -%}
+<link href="{{theme_cdn_dir}}/{{shop.viewSize}}/static/css/site.css?nocache={{nocache}}" rel="stylesheet">
+{%- endblock -%}
 
 
-{%- block OMNI_EXTRA_FOOTER_JS -%}
-  {{super()}}
-
-  <script>
-  // Teu script vai aqui...
-  </script>
-
-{% endblock %}
 
 {% block OMNI_DOCUMENT_TITLE %}
 {{ shop.shopName }} {{ shop.shopSlogan}}
@@ -24,30 +19,40 @@
 
 {%- block OMNI_DOCUMENT_BODY_HEADER -%}
 
+{# template calculadora de frete #}
+
+<script type="text/template" id="shipping_calculator_template">
+
+{{ underscoreTemplates.shippingCalculatorTemplate(viewSize='{{shop.viewSize}}') }}
+
+</script>
+
+
+
 <script type="text/template" id="ad_view_template_top">
-{{underscoreTemplates.ad_view_template(type="top",cssClass="top")}}
+{{underscoreTemplates.ad_view_template(type="top",cssClass="top adView_{{shop.viewSize}}")}}
 </script>
 
 <script type="text/template" id="ad_view_template_default">
-{{underscoreTemplates.ad_view_template(type="default",cssClass="default")}}
+{{underscoreTemplates.ad_view_template(type="default",cssClass="default adView_{{shop.viewSize}}")}}
 </script>
 
 <script type="text/template" id="ad_view_template_bottom">
-{{underscoreTemplates.ad_view_template(type="bottom",cssClass="bottom")}}
+{{underscoreTemplates.ad_view_template(type="bottom",cssClass="bottom adView_{{shop.viewSize}}")}}
 </script>
 
 <script type="text/template" id="ad_view_template_left_sidebar">
-{{underscoreTemplates.ad_view_template(type="left_sidebar",cssClass="left_sidebar")}}
+{{underscoreTemplates.ad_view_template(type="left_sidebar",cssClass="left_sidebar adView_{{shop.viewSize}}")}}
 </script>
 
 <script type="text/template" id="ad_view_template_right_sidebar">
-{{underscoreTemplates.ad_view_template(type="right_sidebar",cssClass="right_sidebar")}}
+{{underscoreTemplates.ad_view_template(type="right_sidebar",cssClass="right_sidebar adView_{{shop.viewSize}}")}}
 </script>
 
 
 
 <script type="text/template" id="catalog_control_template_default">
-{{ underscoreTemplates.catalog_control_template(cssClass="default",type="default") }}
+{{ underscoreTemplates.catalog_control_template(cssClass="default {{shop.viewSize}}",type="default") }}
 </script>
 
 
@@ -109,9 +114,16 @@
 </div>
 
 
+<div class="pages" id="page-shippingCalculatorPage">
+
+Calculador de frete
+
+</div>
+
 <div class="pages" id="page-catalogPage">
 
-    <div class="catalogContainerMain" id="catalogContainerMain" omni-catalog-limit=2>
+
+    <div class="catalogContainerMain" id="catalogContainerMain" omni-catalog-limit=6>
              <div class="catalogControls"></div>
              <hr>
              <div class="catalogContainer row"></div>
@@ -124,11 +136,6 @@
 
 <div class="pages" id="page-homePage">
 	
-
-Dicionario:
-
-
-{{ omniMacros.debugInfo(shop) }}
 
 
   {# Tipos de catalogos:

@@ -34,7 +34,10 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
 #}
 
 
-
+{# organizando os templates UnderScore em diretorios, classificados por viewSize... #}
+{% macro shippingCalculatorTemplate(viewSize='large') %}
+{% raw %} {% include {% endraw%}  "{{themeDir}}/{{viewSize}}/templates/shipping_calculator.theme" {% raw %} %} {% endraw %}
+{% endmacro %}
 
 
 {% macro catalog_control_template(cssClass="control",type="default") %}
@@ -87,8 +90,9 @@ Template universal para o anuncio do produto, adicionado argumento type.
 
 	<!-- href="#catalog/item/<%- adID %>"  href="#catalog/item/<%- adID %>"-->
 
-    <div class="adView {{cssClass}} col-lg-1 col-xs-1 col-md-1">
-       <div class="thumbnail">
+    <div class="adView_{{shop.viewSize}} {{cssClass}} col-lg-1 col-xs-1 col-md-1">
+       
+      <div class="thumbnail">
       <a class="omni_more_info omni-action">
         <img width=128px height=128px src="/photos/best_image/<%- adID %>/128/" >
       </a>

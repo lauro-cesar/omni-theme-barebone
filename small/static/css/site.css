@@ -1,6 +1,4 @@
-
-
-div.catalogs {
+div.catalogs_small {
 	border-style: solid;
 	border-color: #000;
 	border-width: 2px
@@ -8,7 +6,7 @@ div.catalogs {
 	margin-top: 20px;
 }
 
-div.adView {
+div.adView_small {
   width: 250px;
   padding:20px;
   background: url({{theme_cdn_dir}}/static/img/squares.gif) no-repeat center center; 

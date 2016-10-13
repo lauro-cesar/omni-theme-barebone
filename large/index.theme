@@ -1,9 +1,1 @@
 {{ '{% extends' }}  "{{themeDir}}/base.theme" {{ '%}' }}
-
-{% raw %}
-
-{%- block OMNI_EXTRA_CSS_HEADER -%}
-<link href="{{theme_cdn_dir}}/large/css/large.css?nocache={{nocache}}" rel="stylesheet">
-{%- endblock -%}
-
-{%endraw%}

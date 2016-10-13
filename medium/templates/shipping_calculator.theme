@@ -1,0 +1,9 @@
+ <div class="adShippingCalculator col-lg-1 col-xs-1 col-md-1">
+          <%- adTitle %>
+          <%- itemPriceLabel %>
+
+          <div class="deliveryMethodsContainer">
+
+
+          </div>
+</div>

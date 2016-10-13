@@ -11,7 +11,7 @@
 
 {% if shop.catalogs[type] %}
 
-<div class="catalogs {{type}}">
+<div class="catalogs_{{shop.viewSize}} {{type}}">
   {% for cat in shop.catalogs[type] %}
   <h1>{{cat.catalogName}}</h1>
   <h3>{{titulo}}</h3>

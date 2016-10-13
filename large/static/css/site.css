@@ -1,0 +1,13 @@
+div.catalogs_large {
+	border-style: solid;
+	border-color: #000;
+	border-width: 2px
+	padding:20px;
+	margin-top: 20px;
+}
+
+div.adView_large {
+  width: 350px;
+  padding:20px;
+  background: url({{theme_cdn_dir}}/static/img/squares.gif) no-repeat center center; 
+}
