@@ -1,10 +1,5 @@
 {% raw %}
-
-
 {% import "2.1/omni.macros" as omniMacros with context %}
-
-
-
 
 
 {# Porção de template para o container do catalogo, adicionado argumento type para eventuais personalizações. #}
@@ -15,10 +10,6 @@
 {% macro containerCatalog(type="default",limit=25,titulo="Catalogo") %}
 
 {% if shop.catalogs[type] %}
-
-
-  
-
 
 <div class="catalogs {{type}}">
   {% for cat in shop.catalogs[type] %}
