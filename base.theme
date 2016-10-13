@@ -45,14 +45,16 @@
 </script>
 
 
+
 <script type="text/template" id="catalog_control_template_default">
-{{  underscoreTemplates.catalog_control_template(cssClass="default",type="default") }}
+{{ underscoreTemplates.catalog_control_template(cssClass="default",type="default") }}
 </script>
 
 
-<script type="text/template" id="catalog_control_template_top">
-{{  underscoreTemplates.catalog_control_template(cssClass="top",type="top") }}
+<script type="text/template" id="catalog_control_template_exclusive">
+{{  underscoreTemplates.catalog_control_template(cssClass="exclusive",type="exclusive") }}
 </script>
+
 
 
 {%- endblock -%}
@@ -94,6 +96,9 @@
 </div>
 
 
+
+
+
 <div>
 
 {{ shop.shopName }}
@@ -107,7 +112,6 @@
 <div class="pages" id="page-catalogPage">
 
     <div class="catalogContainerMain" id="catalogContainerMain" omni-catalog-limit=2>
-             
              <div class="catalogControls"></div>
              <hr>
              <div class="catalogContainer row"></div>
@@ -120,6 +124,13 @@
 
 <div class="pages" id="page-homePage">
 	
+
+Dicionario:
+
+
+{{ omniMacros.debugInfo(shop) }}
+
+
   {# Tipos de catalogos:
   
   top

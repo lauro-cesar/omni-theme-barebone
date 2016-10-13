@@ -11,9 +11,14 @@
 
 
 
+
 {% macro containerCatalog(type="default",limit=25,titulo="Catalogo") %}
 
 {% if shop.catalogs[type] %}
+
+
+  
+
 
 <div class="catalogs {{type}}">
   {% for cat in shop.catalogs[type] %}
@@ -26,6 +31,7 @@
   <hr>
   {% endfor %}
 </div>
+
 {% endif %}
 {% endmacro %}
 

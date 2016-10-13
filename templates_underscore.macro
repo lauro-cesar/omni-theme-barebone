@@ -33,7 +33,23 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
 
 #}
 
+
+
+
+
 {% macro catalog_control_template(cssClass="control",type="default") %}
+
+{% if type =="exclusive" %}
+
+{% else %}
+
+<span> <b><%- total %></b></span>
+<span class="next <%= (hasNext) ? 'show' : 'hidden' %>">
+<a class="next_page"> Carregar mais </a>
+</span>
+
+{% endif %}
+
 
 {% if type =="default" %}
 <div class="previus <%= (hasPrevious) ? 'show' : 'hidden' %>">
@@ -57,16 +73,8 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
       <% } ) %>    
     </ul>
 </nav>
-
-
-{% else %}
-
-<span> <b><%- total %></b></span>
-<span class="next <%= (hasNext) ? 'show' : 'hidden' %>">
-<a class="next_page"> Carregar mais </a>
-</span>
-
 {% endif %}
+
 
 {% endmacro %}
 
