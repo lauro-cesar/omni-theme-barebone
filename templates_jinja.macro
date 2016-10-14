@@ -6,17 +6,23 @@
 
 
 
+{% macro containerCatalog(type="default",limit=10,titulo="Catalogo") %}
 
-{% macro containerCatalog(type="default",limit=25,titulo="Catalogo") %}
+
+
 
 {% if shop.catalogs[type] %}
 
-<div class="catalogs_{{shop.viewSize}} {{type}}">
+<div class="catalogs_{{viewSize}} {{type}}">
+
+  
   {% for cat in shop.catalogs[type] %}
-  <h1>{{cat.catalogName}}</h1>
-  <h3>{{titulo}}</h3>
-  <div class="catalogContainer{{type}}" id="catalogContainer_{{cat.catalogID}}" omni-catalog-limit={{limit}}>
+  <div class="catalogWidget_{{type}}"  omni-catalog-id="{{cat.catalogID}}" omni-catalog-limit={{limit}}>
+           
+
            <div class="catalogControls"></div>
+
+
            <div class="catalogContainer row"></div>
   </div>
   <hr>
@@ -25,5 +31,17 @@
 
 {% endif %}
 {% endmacro %}
+
+
+
+
+
+
+
+
+
+
+
+
 
 {% endraw %}

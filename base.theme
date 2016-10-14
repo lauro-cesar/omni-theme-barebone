@@ -21,11 +21,8 @@
 
 {# template calculadora de frete #}
 
-<script type="text/template" id="shipping_calculator_template">
 
-{{ underscoreTemplates.shippingCalculatorTemplate(viewSize='{{shop.viewSize}}') }}
 
-</script>
 
 
 
@@ -44,6 +41,14 @@
 <script type="text/template" id="ad_view_template_left_sidebar">
 {{underscoreTemplates.ad_view_template(type="left_sidebar",cssClass="left_sidebar adView_{{shop.viewSize}}")}}
 </script>
+
+
+
+
+<script type="text/template" id="ad_view_template_exclusive">
+{{underscoreTemplates.ad_view_template(type="exclusive",cssClass="exclusive adView_{{shop.viewSize}}")}}
+</script>
+
 
 <script type="text/template" id="ad_view_template_right_sidebar">
 {{underscoreTemplates.ad_view_template(type="right_sidebar",cssClass="right_sidebar adView_{{shop.viewSize}}")}}
@@ -66,6 +71,43 @@
 
 
 {% block OMNI_DOCUMENT_BODY %}
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#omniMenu" aria-expanded="false">
+        <span class="sr-only">Mostrar menu</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    
+    <div class="collapse navbar-collapse" id="omniMenu">
+      <ul class="nav navbar-nav">
+            {% if shop.links['navbar'] %}
+                {{shop.links['navbar']['widget']}} 
+            {% endif %}
+            {% if shop.isSponsor %}
+            {% if shop.links['network'] %}
+                {{shop.links['network']['widget']}}
+            {% endif %}
+            {% endif %}
+            {% if shop.links['tools'] %}
+                {{shop.links['tools']['widget']}}
+            {% endif %}
+      </ul>
+      
+
+      <ul class="nav navbar-nav navbar-right" id="account">
+       <li class="show my_order_button" ></li>
+    
+
+      </ul>
+    </div>
+  </div>
+</nav>
 
 
 
@@ -92,17 +134,6 @@
 
 
 
-<div >
-{% if shop.links.navbar.widget %}
-	<ul class="navbar">
-	{{ shop.links.navbar.widget }}
-	</ul>
-{% endif %}
-</div>
-
-
-
-
 
 <div>
 
@@ -114,9 +145,9 @@
 </div>
 
 
-<div class="pages" id="page-shippingCalculatorPage">
+<div class="pages" id="page-addToCartPage">
 
-Calculador de frete
+Confirmação de compra e calculo do frete, se necessário...
 
 </div>
 
@@ -134,8 +165,42 @@ Calculador de frete
 
 </div>
 
+
+
+
+
+<div class="pages" id="page-remoteContentPage">
+
+  
+
+</div>
+
+
+
 <div class="pages" id="page-homePage">
-	
+
+
+
+
+
+{% if viewSize == "small" %}
+
+{{ jinjaTemplates.containerCatalog(type="top",limit=1,titulo="Catalogs top") }}
+
+{% endif %}
+
+
+{% if viewSize == "large" %}
+{{ jinjaTemplates.containerCatalog(type="top",limit=6,titulo="Catalogs top") }}
+{{ jinjaTemplates.containerCatalog(type="exclusive",limit=6,titulo="Catalogs Padrão") }}
+{{ jinjaTemplates.containerCatalog(type="bottom",limit=6,titulo="Catalogs Exclusivo da loja") }}
+{% endif %}
+
+
+
+
+
+
 
 
   {# Tipos de catalogos:
@@ -154,17 +219,6 @@ Calculador de frete
   #}
 
 
-{{ jinjaTemplates.containerCatalog(type="exclusive",limit=1,titulo="Catalogs Exclusivo da loja") }}
-
-{{ jinjaTemplates.containerCatalog(type="top",limit=1,titulo="Catalogs top") }}
-
-{{ jinjaTemplates.containerCatalog(type="default",limit=1,titulo="Catalogs Padrão") }}
-
-{{ jinjaTemplates.containerCatalog(type="right_sidebar",limit=1,titulo="Catalogs Direita") }}
-
-{{ jinjaTemplates.containerCatalog(type="left_sidebar",limit=1,titulo="Catalogs Esquerda") }}
-
-{{ jinjaTemplates.containerCatalog(type="bottom",limit=1,titulo="Catalogs rodapé")}}
 
 </div>
 
@@ -176,6 +230,45 @@ Subir
 
 
 </div>
+
+<footer>
+    <div class="container-fluid footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                {% if shop.links['institutional'] %}
+                    <h4>{{shop.links['institutional'].label}}</h4>
+                        <ul class="inline">
+                            {{shop.links['institutional']['widget']}}
+                        </ul>
+                {% endif %}
+            </div>
+            <div class="col-lg-3">
+                {% if shop.links['network'] %}
+              <h4 >{{shop.links['network'].label}}</h4>
+              <ul class="inline">
+                  {{shop.links['network']['widget']}}
+                </ul>
+              {% endif %}
+
+                {% if shop.links['admin'] %}
+              <h4>{{shop.links['admin'].label}}</h4>
+                <ul class="inline">
+                  {{shop.links['admin']['widget']}}
+                 </ul>
+              {% endif %}
+
+            </div>
+            <div class="col-lg-6 logotipo">
+               <div class="pull-right">
+               <h4>{{shop.shopName}}</h4>
+                {{shop.shopSlogan}}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
 
 {% endblock %}
 

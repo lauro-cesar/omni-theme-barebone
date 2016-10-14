@@ -35,7 +35,9 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
 
 
 
-{% macro shippingCalculatorTemplate(viewSize='large') %}
+
+
+{% macro addToCartPageTemplate(viewSize='large') %}
 
 {% include {% endraw %} "{{themeDir}}/{{viewSize}}/templates/shipping_calculator.theme" {% raw %} %} 
 
@@ -43,17 +45,6 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
 
 
 {% macro catalog_control_template(cssClass="control",type="default") %}
-
-{% if type =="exclusive" %}
-
-{% else %}
-
-<span> <b><%- total %></b></span>
-<span class="next <%= (hasNext) ? 'show' : 'hidden' %>">
-<a class="next_page"> Carregar mais </a>
-</span>
-
-{% endif %}
 
 
 {% if type =="default" %}
@@ -92,11 +83,27 @@ Template universal para o anuncio do produto, adicionado argumento type.
 
 	<!-- href="#catalog/item/<%- adID %>"  href="#catalog/item/<%- adID %>"-->
 
+
+  {% if viewSize == "large" %}
+    {% set imgSize=256 %}
+  {% endif %}
+
+
+  {% if viewSize =="medium" %}
+    {% set imgSize=128 %}
+  {% endif %}
+
+
+  {% if viewSize =="small" %}
+    {% set imgSize=64 %}
+  {% endif %}
+
+
     <div class="adView_{{shop.viewSize}} {{cssClass}} col-lg-1 col-xs-1 col-md-1">
        
       <div class="thumbnail">
       <a class="omni_more_info omni-action">
-        <img width=128px height=128px src="/photos/best_image/<%- adID %>/128/" >
+        <img width={{imgSize}}px height={{imgSize}}px src="/photos/best_image/<%- adID %>/{{imgSize}}/" >
       </a>
       <div class="caption">
         <div class="adInfo">
@@ -106,6 +113,7 @@ Template universal para o anuncio do produto, adicionado argumento type.
           </a>
           </h4>
           <p><%- adBaitText %></p>
+          {{viewSize}}
         </div>
         <p class="text-primary">
         <h2 class="text-primary">
