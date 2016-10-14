@@ -25,7 +25,7 @@
 
            <div class="catalogContainer row"></div>
   </div>
-  <hr>
+  
   {% endfor %}
 </div>
 
