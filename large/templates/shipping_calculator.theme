@@ -1,11 +1,13 @@
  {% raw %}
  <div class="adShippingCalculator col-lg-1 col-xs-1 col-md-1">
+ 
+ <h1>Meios de frete</h1>
           <%- adTitle %>
           <%- itemPriceLabel %>
 
           <div class="deliveryMethodsContainer">
-
-
+            Lista de meios de frete
           </div>
+
 </div>
 {% endraw %}
