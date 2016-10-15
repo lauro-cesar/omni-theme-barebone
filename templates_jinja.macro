@@ -1,4 +1,5 @@
 {% raw %}
+
 {% import "2.1/omni.macros" as omniMacros with context %}
 
 
@@ -13,35 +14,37 @@
 
 {% if shop.catalogs[type] %}
 
-<div class="catalogs_{{viewSize}} {{type}}">
+  {% if type =="exclusive" %}
+     {% for catalog in shop.catalogs[type] %}
+        <div class="jumbotron">
+          <h1>{{catalog.catalogName}}</h1>
+          <div class="panel-body catalogWidget_{{type}}"  omni-catalog-id="{{catalog.catalogID}}" omni-catalog-limit={{limit}}>
+            <div class="catalogContainer row"></div>
+            <div class="catalogControls"></div>
+          </div>
+        </div>
+      {% endfor %}
 
-  
-  {% for cat in shop.catalogs[type] %}
-  <div class="catalogWidget_{{type}}"  omni-catalog-id="{{cat.catalogID}}" omni-catalog-limit={{limit}}>
-           
-
-           <div class="catalogControls"></div>
-
-
-           <div class="catalogContainer row"></div>
+  {% else %}
+  <div class="catalogs_{{viewSize}} {{type}}">
+    {% for catalog in shop.catalogs[type] %}
+      <div class="panel panel-default">
+        <div class="panel-heading">{{catalog.catalogName}}</div>
+        <div class="panel-body catalogWidget_{{type}}"  omni-catalog-id="{{catalog.catalogID}}" omni-catalog-limit={{limit}}>
+            <div class="catalogContainer row"></div>
+            <div class="catalogControls"></div>
+        </div>
+      </div>
+    {% endfor %}
   </div>
-  
-  {% endfor %}
-</div>
+  {% endif %}
+
 
 {% endif %}
+
+
+
+
 {% endmacro %}
-
-
-
-
-
-
-
-
-
-
-
-
 
 {% endraw %}

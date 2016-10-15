@@ -1,10 +1,10 @@
 {% raw %} {% import {% endraw %} "{{themeDir}}/templates_jinja.macro" {% raw %} as jinjaTemplates with context %} {% endraw %}
 {% raw %} {% import {% endraw %} "{{themeDir}}/templates_underscore.macro" {% raw %} as underscoreTemplates with context %} {% endraw %}
+
+
 {% raw %}
 {% extends "2.1/omni.theme" %}
 {% import "2.1/omni.macros" as omniMacros with context %}
-
-
 
 {%- block OMNI_EXTRA_CSS_HEADER -%}
 <link href="{{theme_cdn_dir}}/{{shop.viewSize}}/static/css/site.css?nocache={{nocache}}" rel="stylesheet">
@@ -16,63 +16,46 @@
 {{ shop.shopName }} {{ shop.shopSlogan}}
 {% endblock %}
 
-
+<!-- wee split the page in three main rows (OMNI_DOCUMENT_BODY_HEADER, OMNI_DOCUMENT_BODY adn OMNI_DOCUMENT_BODY_FOOTER) -->
+<!-- This block represent the top of a page -->
 {%- block OMNI_DOCUMENT_BODY_HEADER -%}
-
-{# template calculadora de frete #}
-
-
-
-
-
+<!-- Start printing javascript underscore Templates -->
 
 <script type="text/template" id="ad_view_template_top">
-{{underscoreTemplates.ad_view_template(type="top",cssClass="top adView_{{shop.viewSize}}")}}
+{{underscoreTemplates.ad_view_template(type="top",cssClass="top adView")}}
 </script>
 
 <script type="text/template" id="ad_view_template_default">
-{{underscoreTemplates.ad_view_template(type="default",cssClass="default adView_{{shop.viewSize}}")}}
+{{underscoreTemplates.ad_view_template(type="default",cssClass="default adView")}}
 </script>
 
 <script type="text/template" id="ad_view_template_bottom">
-{{underscoreTemplates.ad_view_template(type="bottom",cssClass="bottom adView_{{shop.viewSize}}")}}
+{{underscoreTemplates.ad_view_template(type="bottom",cssClass="bottom adView")}}
 </script>
 
 <script type="text/template" id="ad_view_template_left_sidebar">
-{{underscoreTemplates.ad_view_template(type="left_sidebar",cssClass="left_sidebar adView_{{shop.viewSize}}")}}
+{{underscoreTemplates.ad_view_template(type="left_sidebar",cssClass="left_sidebar adView")}}
 </script>
-
-
-
 
 <script type="text/template" id="ad_view_template_exclusive">
-{{underscoreTemplates.ad_view_template(type="exclusive",cssClass="exclusive adView_{{shop.viewSize}}")}}
+{{underscoreTemplates.ad_view_template(type="exclusive",cssClass="exclusive adView")}}
 </script>
-
 
 <script type="text/template" id="ad_view_template_right_sidebar">
-{{underscoreTemplates.ad_view_template(type="right_sidebar",cssClass="right_sidebar adView_{{shop.viewSize}}")}}
+{{underscoreTemplates.ad_view_template(type="right_sidebar",cssClass="right_sidebar adView")}}
 </script>
-
-
 
 <script type="text/template" id="catalog_control_template_default">
-{{ underscoreTemplates.catalog_control_template(cssClass="default {{shop.viewSize}}",type="default") }}
+{{ underscoreTemplates.catalog_control_template(cssClass="default {{viewSize}}",type="default") }}
 </script>
-
-
 <script type="text/template" id="catalog_control_template_exclusive">
 {{  underscoreTemplates.catalog_control_template(cssClass="exclusive",type="exclusive") }}
 </script>
+<!-- End printing javascript underscore Templates -->
 
 
-
-{%- endblock -%}
-
-
-{% block OMNI_DOCUMENT_BODY %}
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<!-- start navbar -->
+<nav class="navbar navbar-inverse red navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#omniMenu" aria-expanded="false">
@@ -98,140 +81,36 @@
                 {{shop.links['tools']['widget']}}
             {% endif %}
       </ul>
-      
-
       <ul class="nav navbar-nav navbar-right" id="account">
        <li class="show my_order_button" ></li>
-    
-
       </ul>
     </div>
   </div>
 </nav>
+<!-- End navBar -->
+{%- endblock -%}
 
-
-
-
-<div class="pages container-fluid" id="page-mainContent">
-
-
-
-<div class="searchEngine">
-<span class="input-group">
-  <input type="text" class="form-control searchInput" placeholder="Localize rapido">
-  <span class="input-group-btn">
-    <button class="btn searchButton btn-default" type="button">Pesquisar</button> 
-    <button class="btn resetButton btn-warning" type="button">
-    <span class="glyphicon glyphicon-refresh" aria-hidden="true">
-    </span> 
-    </button>
-  </span>
-</span>
-
-
+ <!-- This block represent the center of a page -->
+{% block OMNI_DOCUMENT_BODY %}
+<div class="container-fluid">
+    <h2 class="text-center">
+      {{shop['shopName']}}
+    </h2>
+      <img class="img-responsive center-block " src="{{ shop['shopLogo'] }}=s256">
+    <h4 class="text-center">
+      {{shop['shopSlogan']}}
+    </h4>
+    <h1 class="text-center">
+    Em construção
+    </h1>
 </div>
+{%- endblock -%}
 
 
-
-
-
-<div>
-
-{{ shop.shopName }}
-<hr>
-<img src="{{ shop.shopLogo }}" witdh=128px>
-<br>
-{{ shop.shopSlogan}}
-</div>
-
-
-<div class="pages" id="page-addToCartPage">
-
-Confirmação de compra e calculo do frete, se necessário...
-
-</div>
-
-<div class="pages" id="page-catalogPage">
-
-
-    <div class="catalogContainerMain" id="catalogContainerMain" omni-catalog-limit=6>
-             <div class="catalogControls"></div>
-             <hr>
-             <div class="catalogContainer row"></div>
-             <hr>
-             <div class="catalogControls"></div>
-    </div>
-
-
-</div>
-
-
-
-
-
-<div class="pages" id="page-remoteContentPage">
-
-  
-
-</div>
-
-
-
-<div class="pages" id="page-homePage">
-
-
-
-
-
-{% if viewSize == "small" %}
-
-{{ jinjaTemplates.containerCatalog(type="top",limit=1,titulo="Catalogs top") }}
-
-{% endif %}
-
-
-{% if viewSize == "large" %}
-{{ jinjaTemplates.containerCatalog(type="top",limit=6,titulo="Catalogs top") }}
-{{ jinjaTemplates.containerCatalog(type="exclusive",limit=6,titulo="Catalogs Padrão") }}
-{{ jinjaTemplates.containerCatalog(type="bottom",limit=6,titulo="Catalogs Exclusivo da loja") }}
-{% endif %}
-
-
-
-
-
-
-
-
-  {# Tipos de catalogos:
-  
-  top
-  default
-  bottom
-  left_sidebar
-  right_sidebar
-
-  Catalogo exclusive, quando disponivel deve receber uma atenção especial.
-  
-  exclusive : produtos vendidos com condições exclusivas para a loja, exemplo: Lojista publica no canal de venda da E-loja um produto com disconto exclisivo para o E-lojisa.
-
-  
-  #}
-
-
-
-</div>
-
-
-
-<a class="scrolltoup">
-Subir
-</a>
-
-
-</div>
-
-<footer>
+<!-- This block represent the bottom of a page -->
+{%- block OMNI_DOCUMENT_BODY_FOOTER -%}
+<!-- Footer  -->
+<footer id="footer">
     <div class="container-fluid footer">
     <div class="container">
         <div class="row">
@@ -269,8 +148,9 @@ Subir
     </div>
     </div>
 </footer>
+<!-- End Footer -->
 
-{% endblock %}
+{%- endblock -%}
 
 
 

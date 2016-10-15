@@ -1,15 +1,6 @@
 {{ '{% extends' }}  "{{themeDir}}/css.theme" {{ '%}' }}
 
-
-
 {% block SPECIFIC_CSS %}
-div.catalogs_large {
-	border-style: solid;
-	border-color: #000;
-	border-width: 2px
-	padding:20px;
-	margin-top: 20px;
-}
 
 .minSize {
 	min-height: 640px;
@@ -18,12 +9,6 @@ div.catalogs_large {
 html, body {
     margin-top: 35px;
     position: relative;
-}
-
-div.adView_large {
-  width: 350px;
-  padding:20px;
-  background: url({{theme_cdn_dir}}/static/img/squares.gif) no-repeat center center; 
 }
 
 {% endblock %}

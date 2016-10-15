@@ -4,6 +4,7 @@
 
 {% block SPECIFIC_CSS %}
 
+
 .minSize {
 	min-height: 640px;
 }
@@ -13,20 +14,7 @@ html, body {
     position: relative;
 }
 
-div.catalogs_small {
-	border-style: solid;
-	border-color: #000;
-	border-width: 2px
-	padding:5px;
-	margin-top: 5px;
-}
 
-
-div.adView_small {
-  width: 96px;
-  padding:5px;
-  background: url({{theme_cdn_dir}}/static/img/squares.gif) no-repeat center center; 
-}
 
 {% endblock %}
 

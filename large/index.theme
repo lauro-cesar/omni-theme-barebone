@@ -1,1 +1,92 @@
 {{ '{% extends' }}  "{{themeDir}}/base.theme" {{ '%}' }}
+
+
+
+{% raw %}
+
+{% block OMNI_DOCUMENT_BODY %}
+<!-- start Main Content  -->
+<div class="pages minSize container-fluid" id="page-mainContent">
+	<!-- Main Row -->
+    <div class="row">
+        <div class="col-md-3 col-lg-3">
+		    <div>
+		    <h2 class="text-center">
+		      {{shop['shopName']}}
+		    </h2>
+		      <img class="img-responsive center-block " src="{{ shop['shopLogo'] }}=s256">
+		    <h4 class="text-center">
+		      {{shop['shopSlogan']}}
+		    </h4>
+		    </div>
+ 		</div>
+
+ 		<!-- Start Pages container -->
+        <div class="col-md-9 col-lg-9 minSize">
+            <div class="row">
+	            <div class="pages" id=page-errorPage>
+	            Some Error occured...
+	            </div>
+			</div>
+			<div class="row">
+
+				<div class="col-md-1 col-lg-1"></div>
+				<div class="searchEngine col-md-10 col-lg-10">
+					<span class="input-group">
+					<input type="text" class="form-control searchInput" placeholder="Localize rapido">
+						<span class="input-group-btn">
+						<button class="btn searchButton btn-default" type="button"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> </button> 
+						</span>
+					</span>
+				</div>
+				<div class="col-md-1 col-lg-1"></div>
+			</div>
+
+			<!-- Home page Large -->
+			<div class="pages " id="page-homePage">
+			
+
+			{{ jinjaTemplates.containerCatalog(type="exclusive",limit=6,titulo="Catalogs Padrão") }}
+
+
+			{{ jinjaTemplates.containerCatalog(type="top",limit=6,titulo="Catalogs top") }}
+			
+			
+			{{ jinjaTemplates.containerCatalog(type="default",limit=6,titulo="Catalogs top") }}
+			
+			
+			
+			{{ jinjaTemplates.containerCatalog(type="bottom",limit=6,titulo="Catalogs Exclusivo da loja") }}
+			</div>
+			<!-- End home page Large -->
+
+			<!-- Main Catalogo -->
+			<div class="pages " id="page-catalogPage">
+			    <div class="catalogContainerMain" id="catalogContainerMain" omni-catalog-limit=6>
+			             <div class="catalogControls"></div>
+			             <div class="catalogContainer row"></div>
+			    </div>
+			</div>
+			<!-- end Maincatalogo -->
+
+			<!-- Remote content  -->
+			<div class="pages " id="page-remoteContentPage"></div>
+			<!-- End remote content -->
+		</div>
+		<!-- End pages container -->
+	</div>
+	<!-- End Main Row -->
+
+	<div class="container">
+	<a class="scrolltoup">
+	Subir
+	</a>
+	</div>
+
+</div>
+<!-- End Main content -->
+
+{% endblock %}
+
+
+{% endraw %}

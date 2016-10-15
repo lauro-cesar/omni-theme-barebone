@@ -48,19 +48,9 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
 
 
 {% if type =="default" %}
-<div class="previus <%= (hasPrevious) ? 'show' : 'hidden' %>">
-<a class="previus_page"> Página anterior </a>
-</div>
-
-<div> Total encontrados: <%- total %>, mostrando página <%- page %> de  <%- num_pages %></div>
 
 
-<div class="next <%= (hasNext) ? 'show' : 'hidden' %>">
-<a class="next_page"> Próxima página </a>
-</div>
-
-
-
+<h3 class="text-center">Listando <%- total %> itens, mostrando página <%- page %> de  <%- num_pages %></h3>
 <nav aria-label="page navigation">
 
   <ul class="pagination">
@@ -69,68 +59,56 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
       <% } ) %>    
     </ul>
 </nav>
+
+
 {% endif %}
 
 
 {% endmacro %}
 
 {#
+
+
+
+
+
 Template universal para o anuncio do produto, adicionado argumento type.
 #}
 
 
 {% macro ad_view_template(cssClass="default",type="default") %}
 
-	<!-- href="#catalog/item/<%- adID %>"  href="#catalog/item/<%- adID %>"-->
-
-
-  {% if viewSize == "large" %}
-    {% set imgSize=256 %}
-  {% endif %}
-
-
-  {% if viewSize =="medium" %}
-    {% set imgSize=128 %}
-  {% endif %}
-
-
-  {% if viewSize =="small" %}
-    {% set imgSize=64 %}
-  {% endif %}
-
-
-    <div class="adView_{{shop.viewSize}} {{cssClass}} col-lg-1 col-xs-1 col-md-1">
-       
-      <div class="thumbnail">
-      <a class="omni_more_info omni-action">
-        <img width={{imgSize}}px height={{imgSize}}px src="/photos/best_image/<%- adID %>/{{imgSize}}/" >
+    <div class="col-lg-3 {{cssClass}} {{viewSize}}">
+       <div class="thumbnail">
+      <a class="omni-page" href="#catalog/item/<%- adID %>">
+        <img width=300px height=300px src="/ad/best_image/<%- adID %>/300/" >
       </a>
       <div class="caption">
         <div class="adInfo">
           <h4>
-          <a class="omni_more_info omni-action" >
+          <a class="omni-page" href="#catalog/item/<%- adID %>">
           <%- adTitle %>
           </a>
           </h4>
           <p><%- adBaitText %></p>
-          {{viewSize}}
         </div>
         <p class="text-primary">
         <h2 class="text-primary">
           <%- itemPriceLabel %>
         </h2>
         </p>
-        <div>
-          <a class="btn btn-block btn-success btn-lg omni_add_to_cart <%= (!inCart) ? 'show' : 'hidden'%> omni-action" role="button">Adicionar ao pedido</a>
-          <a class="btn btn-block btn-warning btn-lg omni_remove_from_cart <%= (inCart) ? 'show' : 'hidden'%> omni-action" role="button">Remover do carrinho</a>
-          <a  class="btn btn-primary btn-lg btn-block omni_more_info omni-action" >Ver mais detalhes</a>
-          <a class="btn btn-block btn-info btn-lg omni_shipping_calculator omni-action <%= (showShippingCalculator) ? 'show' : 'hidden'%> " >
-          Calcular frete
-          </a>
-        </div>
+    <div>
+      <a class="btn btn-block btn-success btn-lg omni_add_to_cart <%= (!inCart) ? 'show' : 'hidden'%> omni-action" role="button">Adicionar ao pedido</a>
+      <a class="btn btn-block btn-warning btn-lg omni_remove_from_cart <%= (inCart) ? 'show' : 'hidden'%> omni-action" role="button">Remover do carrinho</a>
+      <a  class="btn btn-primary btn-lg btn-block omni_more_info omni-action" >Ver mais detalhes</a>
+      <a class="btn btn-block btn-info btn-lg omni_shipping_calculator omni-action <%= (showShippingCalculator) ? 'show' : 'hidden'%> " >
+      Calcular frete
+      </a>
+    </div>
       </div>
     </div>
     </div>
+    
 {% endmacro %}
 
 
