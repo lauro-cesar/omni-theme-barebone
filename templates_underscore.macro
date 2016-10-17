@@ -44,13 +44,13 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
 {% endmacro %}
 
 
-{% macro catalog_control_template(cssClass="control",type="default") %}
+
+
+{% macro catalog_control_navigation_template(cssClass="control",type="default") %}
 
 
 {% if type =="default" %}
 
-
-<h3 class="text-center">Listando <%- total %> itens, mostrando página <%- page %> de  <%- num_pages %></h3>
 <nav aria-label="page navigation">
 
   <ul class="pagination">
@@ -62,35 +62,51 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
 
 
 {% endif %}
+{% endmacro %}
+
+{% macro catalog_control_information_template(cssClass="control",type="default") %}
 
 
 {% endmacro %}
 
 {#
 
-
-
-
-
 Template universal para o anuncio do produto, adicionado argumento type.
+Adicionado atributo photos ao modelo adModel, como um array de objetos.
+
+Exemplo de uso
+
+    <% _.each( photos, function(photo, index, list) { %>
+      <div class="image">
+      <img  width=32px src="<%- photo.photoSrc %>">
+      <span> <%- photo.photoCaption %> </span>
+      </div>
+    <% } ) %>    
+
+
 #}
+
+
+
+
 
 
 {% macro ad_view_template(cssClass="default",type="default") %}
 
     <div class="col-lg-3 {{cssClass}} {{viewSize}}">
        <div class="thumbnail">
-      <a class="omni-page" href="#catalog/item/<%- adID %>">
+      <a class="omni-page" href="<%- perma_path %>">
         <img width=300px height=300px src="/ad/best_image/<%- adID %>/300/" >
       </a>
       <div class="caption">
         <div class="adInfo">
           <h4>
-          <a class="omni-page" href="#catalog/item/<%- adID %>">
+          <a class="omni-page" href="<%- perma_path %>">
           <%- adTitle %>
           </a>
           </h4>
           <p><%- adBaitText %></p>
+
         </div>
         <p class="text-primary">
         <h2 class="text-primary">
@@ -100,7 +116,7 @@ Template universal para o anuncio do produto, adicionado argumento type.
     <div>
       <a class="btn btn-block btn-success btn-lg omni_add_to_cart <%= (!inCart) ? 'show' : 'hidden'%> omni-action" role="button">Adicionar ao pedido</a>
       <a class="btn btn-block btn-warning btn-lg omni_remove_from_cart <%= (inCart) ? 'show' : 'hidden'%> omni-action" role="button">Remover do carrinho</a>
-      <a  class="btn btn-primary btn-lg btn-block omni_more_info omni-action" >Ver mais detalhes</a>
+      <a  class="btn btn-primary btn-lg btn-block omni_more_info omni-action omni-page" href="<%- perma_path %>" >Ver mais detalhes</a>
       <a class="btn btn-block btn-info btn-lg omni_shipping_calculator omni-action <%= (showShippingCalculator) ? 'show' : 'hidden'%> " >
       Calcular frete
       </a>
@@ -110,6 +126,65 @@ Template universal para o anuncio do produto, adicionado argumento type.
     </div>
     
 {% endmacro %}
+
+{% macro ad_view_detail_template(cssClass="itemDetail") %}
+
+
+
+<div class="panel panel-primary minimo">
+  <div class="panel-heading">
+  
+      
+        <div class="row">
+
+          <div class="col-md-8 col-xs-8 col-lg-8">
+              <h4 class="titulo">
+               <%- adTitle %>
+              </h4>
+          </div>
+
+
+
+
+          <div class="col-md-2 col-xs-2 col-lg-2">
+              <span class="titulo pull-right">
+                  <%- itemPriceLabel %>
+              </span>         
+          </div>
+
+          <div class="col-md-2 col-xs-2 col-lg-2">
+              <a class="btn btn-block btn-warning buy_item" href="<%- perma_path %>" role="button">Comprar</a>
+          </div>
+
+        </div>
+
+
+  </div>
+  <div class="panel-body">
+
+  <div class="Galeria">
+        <% _.each( photos, function(photo, index, list) { %>
+      <div class="image">
+      <img  width=512px src="<%- photo.photoSrc %>=s512">
+      <span> <%- photo.photoCaption %> </span>
+      </div>
+    <% } ) %>   
+
+  </div>
+
+    <span><%= adContentText %></span>
+  </div>
+
+</div>
+
+
+    
+
+
+
+
+{% endmacro %}
+
 
 
 {% endraw %}

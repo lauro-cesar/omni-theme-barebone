@@ -1,6 +1,9 @@
 
 {% block COMMON_CSS %}
 
+.separator {
+	height: 20px;
+}
 
 
 #footer {

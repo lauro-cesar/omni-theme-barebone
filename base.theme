@@ -21,6 +21,10 @@
 {%- block OMNI_DOCUMENT_BODY_HEADER -%}
 <!-- Start printing javascript underscore Templates -->
 
+<script type="text/template" id="ad_view_detail_template">
+  {{ underscoreTemplates.ad_view_detail_template() }}
+</script>
+
 <script type="text/template" id="ad_view_template_top">
 {{underscoreTemplates.ad_view_template(type="top",cssClass="top adView")}}
 </script>
@@ -45,12 +49,27 @@
 {{underscoreTemplates.ad_view_template(type="right_sidebar",cssClass="right_sidebar adView")}}
 </script>
 
-<script type="text/template" id="catalog_control_template_default">
-{{ underscoreTemplates.catalog_control_template(cssClass="default {{viewSize}}",type="default") }}
+<!-- Navigation templates  -->
+<script type="text/template" id="catalog_control_navigation_template_default">
+{{ underscoreTemplates.catalog_control_navigation_template(cssClass="default {{viewSize}}",type="default") }}
 </script>
-<script type="text/template" id="catalog_control_template_exclusive">
-{{  underscoreTemplates.catalog_control_template(cssClass="exclusive",type="exclusive") }}
+
+<script type="text/template" id="catalog_control_navigation_template_exclusive">
+{{  underscoreTemplates.catalog_control_navigation_template(cssClass="exclusive",type="exclusive") }}
 </script>
+<!-- End navigation templates -->
+
+<!-- Information templates -->
+<script type="text/template" id="catalog_control_information_template_default">
+{{ underscoreTemplates.catalog_control_information_template(cssClass="default {{viewSize}}",type="default") }}
+</script>
+
+<script type="text/template" id="catalog_control_information_template_exclusive">
+{{  underscoreTemplates.catalog_control_information_template(cssClass="exclusive",type="exclusive") }}
+</script>
+<!-- End information templates -->
+
+
 <!-- End printing javascript underscore Templates -->
 
 
@@ -109,6 +128,10 @@
 
 <!-- This block represent the bottom of a page -->
 {%- block OMNI_DOCUMENT_BODY_FOOTER -%}
+<div class="container-fluid">
+<p class="pull-right"><a class="scrolltoup" >Ir ao topo</a></p>
+ </div>
+
 <!-- Footer  -->
 <footer id="footer">
     <div class="container-fluid footer">

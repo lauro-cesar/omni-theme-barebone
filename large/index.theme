@@ -10,15 +10,36 @@
 	<!-- Main Row -->
     <div class="row">
         <div class="col-md-3 col-lg-3">
+		    <!-- Logo  -->
 		    <div>
-		    <h2 class="text-center">
-		      {{shop['shopName']}}
-		    </h2>
-		      <img class="img-responsive center-block " src="{{ shop['shopLogo'] }}=s256">
-		    <h4 class="text-center">
-		      {{shop['shopSlogan']}}
-		    </h4>
+			    <h2 class="text-center">
+			      {{shop['shopName']}}
+			    </h2>
+			      <img class="img-responsive center-block " src="{{ shop['shopLogo'] }}=s256">
+			    <h4 class="text-center">
+			      {{shop['shopSlogan']}}
+			    </h4>
 		    </div>
+		    <!-- End logo -->
+		    <div class="separator"></div>
+		    <!-- Departments -->
+
+            {% if shop.links['department']['widget'] %}
+              <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h4 class="titulo">{{shop.links['department'].label}}</h4>      
+              </div>
+              <div class="panel-body">
+              	<ul class="nav nav-stacked">
+                 {{shop.links['department']['widget']}}
+              	</ul>
+              </div>
+              </div>
+            {% endif %}
+
+		    <!-- End Departments -->
+
+
  		</div>
 
  		<!-- Start Pages container -->
@@ -33,7 +54,7 @@
 				<div class="col-md-1 col-lg-1"></div>
 				<div class="searchEngine col-md-10 col-lg-10">
 					<span class="input-group">
-					<input type="text" class="form-control searchInput" placeholder="Localize rapido">
+					<input type="text" class="form-control searchInput" placeholder="Localize rápido">
 						<span class="input-group-btn">
 						<button class="btn searchButton btn-default" type="button"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span> </button> 
 						</span>
@@ -41,47 +62,49 @@
 				</div>
 				<div class="col-md-1 col-lg-1"></div>
 			</div>
+			<div class="separator"></div>
 
+			<!-- Page Detail  -->
+
+			<div class="pages minSize" id="page-detailPage"></div>
+
+			
+			<!-- End Page Detail -->
 			<!-- Home page Large -->
-			<div class="pages " id="page-homePage">
+			<div class="pages minSize" id="page-homePage">
 			
 
 			{{ jinjaTemplates.containerCatalog(type="exclusive",limit=6,titulo="Catalogs Padrão") }}
 
 
 			{{ jinjaTemplates.containerCatalog(type="top",limit=6,titulo="Catalogs top") }}
-			
-			
-			{{ jinjaTemplates.containerCatalog(type="default",limit=6,titulo="Catalogs top") }}
-			
-			
+				
 			
 			{{ jinjaTemplates.containerCatalog(type="bottom",limit=6,titulo="Catalogs Exclusivo da loja") }}
 			</div>
 			<!-- End home page Large -->
 
 			<!-- Main Catalogo -->
-			<div class="pages " id="page-catalogPage">
+			<div class="pages minSize" id="page-catalogPage">
 			    <div class="catalogContainerMain" id="catalogContainerMain" omni-catalog-limit=6>
-			             <div class="catalogControls"></div>
+                         
+                         <span class="catalogControlInformation"></span>
+                         <span class="catalogControlNavigation"></span>
+            			
 			             <div class="catalogContainer row"></div>
 			    </div>
 			</div>
 			<!-- end Maincatalogo -->
 
 			<!-- Remote content  -->
-			<div class="pages " id="page-remoteContentPage"></div>
+			<div class="pages minSize" id="page-remoteContentPage"></div>
 			<!-- End remote content -->
 		</div>
 		<!-- End pages container -->
 	</div>
 	<!-- End Main Row -->
 
-	<div class="container">
-	<a class="scrolltoup">
-	Subir
-	</a>
-	</div>
+
 
 </div>
 <!-- End Main content -->

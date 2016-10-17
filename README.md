@@ -7,6 +7,7 @@ Template básico comentado
 Agora o catalogo é adicionado segundo uma classe, e o catalogID é retirado do atributo omni-catalog-id, como no exemplo:
 
 
+
   <div class="catalogWidget_{{type}}"  omni-catalog-id="{{cat.catalogID}}" omni-catalog-limit={{limit}}>
            
 
