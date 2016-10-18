@@ -68,19 +68,20 @@
 
 			<div class="pages minSize" id="page-detailPage"></div>
 
-			
+
 			<!-- End Page Detail -->
 			<!-- Home page Large -->
 			<div class="pages minSize" id="page-homePage">
 			
 
-			{{ jinjaTemplates.containerCatalog(type="exclusive",limit=6,titulo="Catalogs Padrão") }}
+			{{ jinjaTemplates.containerCatalog(type="exclusive",limit=6,titulo="Exclusivos") }}
 
-
-			{{ jinjaTemplates.containerCatalog(type="top",limit=6,titulo="Catalogs top") }}
-				
 			
-			{{ jinjaTemplates.containerCatalog(type="bottom",limit=6,titulo="Catalogs Exclusivo da loja") }}
+			{{ jinjaTemplates.containerCatalog(type="top",limit=6,titulo="Catalogs topo") }}
+				
+
+			
+			{{ jinjaTemplates.containerCatalog(type="bottom",limit=6,titulo="Catalogos rodapé") }}
 			</div>
 			<!-- End home page Large -->
 
