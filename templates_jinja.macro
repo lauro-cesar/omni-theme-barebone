@@ -12,7 +12,7 @@
 
 
 
-{% if shop.catalogs[type] %}
+{% if shop.catalogs[type]|length > 0 %}
 
   {% if type =="exclusive" %}
      {% for catalog in shop.catalogs[type] %}
