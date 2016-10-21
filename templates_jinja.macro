@@ -17,7 +17,10 @@
   {% if type =="exclusive" %}
      {% for catalog in shop.catalogs[type] %}
         <div class="jumbotron">
-          <h1>{{catalog.catalogName}}</h1>
+          <h1>{{catalog.catalogName}} </h1>
+          <h3>
+            Total de items: [ <b>{{shop.catalogs[type]|length }} </b> ] 
+          </h3>
           <div class="panel-body catalogWidget_{{type}}"  omni-catalog-id="{{catalog.catalogID}}" omni-catalog-limit={{limit}}>
             <div class="catalogContainer row"></div>
              <span class="catalogControlInformation"></span>

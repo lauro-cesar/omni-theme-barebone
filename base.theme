@@ -21,6 +21,47 @@
 {%- block OMNI_DOCUMENT_BODY_HEADER -%}
 <!-- Start printing javascript underscore Templates -->
 
+
+
+
+
+<script type="text/template" id="shipping_calculator_render_template">
+
+
+<div>
+      <a class="btn btn-primary btn-lg omni_dismiss omni-action">
+      Sair
+      </a>
+
+</div>
+<div>
+<form name="formCep_<%- id %>">
+      Cep:
+      <input type="text" name="zipCode">
+      <hr>
+      Qt itens:
+      <input type="text" name="itemQT" value="<%- itemQT %>">
+</form>
+
+      <a class="btn btn-block btn-info btn-lg omni_shipping_estimate omni-action">
+      Estimar Frete
+      </a>
+
+</div>
+
+</script>
+
+
+<script type="text/template" id="shipping_calculator_method_render_template">
+
+ 
+<span>
+  <h2><%- label %></h2>
+</span>
+
+</script>
+
+
 <script type="text/template" id="ad_view_detail_template">
   {{ underscoreTemplates.ad_view_detail_template() }}
 </script>

@@ -1,8 +1,3 @@
-{{ '{% extends' }}  "{{themeDir}}/css.theme" {{ '%}' }}
-
-
-
-{% block SPECIFIC_CSS %}
 
 .minSize {
 	min-height: 640px;
@@ -13,5 +8,3 @@ html, body {
     position: relative;
 }
 
-
-{% endblock %}

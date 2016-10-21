@@ -1,6 +1,24 @@
-{{ '{% extends' }}  "{{themeDir}}/css.theme" {{ '%}' }}
+.shippingCalculatorContainer .loading {
+	display: none;
+}
 
-{% block SPECIFIC_CSS %}
+.separator {
+	height: 20px;
+}
+
+
+#footer {
+   left:0px;
+   bottom:0px;
+   width:100%;
+   background:#999;
+}
+
+/* IE 6 */
+* html #footer {
+   position:absolute;
+   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+}
 
 .minSize {
 	min-height: 640px;
@@ -9,6 +27,6 @@
 html, body {
     margin-top: 35px;
     position: relative;
+
 }
 
-{% endblock %}

@@ -106,7 +106,6 @@ Exemplo de uso
           </a>
           </h4>
           <p><%- adBaitText %></p>
-
         </div>
         <p class="text-primary">
         <h2 class="text-primary">
@@ -120,6 +119,18 @@ Exemplo de uso
       <a class="btn btn-block btn-info btn-lg omni_shipping_calculator omni-action <%= (showShippingCalculator) ? 'show' : 'hidden'%> " >
       Calcular frete
       </a>
+
+
+<span class="shippingCalculatorContainer" shipping_calculator_render_template_id="#shipping_calculator_render_template" shipping_calculator_method_render_template_id="#shipping_calculator_method_render_template">
+          
+
+          <span class="loading">
+            Carregando estimativas de frete.
+          </span>
+          
+
+</span>
+
     </div>
       </div>
     </div>
@@ -162,6 +173,11 @@ Exemplo de uso
   </div>
   <div class="panel-body">
 
+
+  <div class="row">
+
+  <div class="col-md-8">
+
   <div class="Galeria">
         <% _.each( photos, function(photo, index, list) { %>
       <div class="image">
@@ -169,11 +185,30 @@ Exemplo de uso
       <span> <%- photo.photoCaption %> </span>
       </div>
     <% } ) %>   
-
   </div>
-
+</div>
+<div class="col-md-4">
     <span><%= adContentText %></span>
-  </div>
+<hr>
+
+      <a class="btn btn-block btn-info btn-lg omni_shipping_calculator omni-action <%= (showShippingCalculator) ? 'show' : 'hidden'%> " >
+      Calcular frete
+      </a>
+
+
+<span class="shippingCalculatorContainer" shipping_calculator_render_template_id="#shipping_calculator_render_template" shipping_calculator_method_render_template_id="#shipping_calculator_method_render_template">
+
+  
+ 
+          <span class="loading">
+           Carregando estimativas
+          </span>
+          
+
+</span>
+
+</div>
+</div>
 
 </div>
 
