@@ -121,11 +121,13 @@ Exemplo de uso
       </a>
 
 
-<span class="shippingCalculatorContainer" shipping_calculator_render_template_id="#shipping_calculator_render_template" shipping_calculator_method_render_template_id="#shipping_calculator_method_render_template">
+<span class="shippingCalculatorContainer" shipping_price_render_template_id="#shipping_price_render_template" shipping_calculator_render_template_id="#shipping_calculator_render_template" shipping_calculator_method_render_template_id="#shipping_calculator_method_render_template">
           
 
           <span class="loading">
             Carregando estimativas de frete.
+              <hr>
+  <img src="{{theme_cdn_dir}}/static/img/loading.gif">
           </span>
           
 
@@ -196,12 +198,14 @@ Exemplo de uso
       </a>
 
 
-<span class="shippingCalculatorContainer" shipping_calculator_render_template_id="#shipping_calculator_render_template" shipping_calculator_method_render_template_id="#shipping_calculator_method_render_template">
+<span class="shippingCalculatorContainer" shipping_price_render_template_id="#shipping_price_render_template" shipping_calculator_render_template_id="#shipping_calculator_render_template" shipping_calculator_method_render_template_id="#shipping_calculator_method_render_template">
 
   
  
           <span class="loading">
            Carregando estimativas
+             <hr>
+  <img src="{{theme_cdn_dir}}/static/img/loading.gif">
           </span>
           
 

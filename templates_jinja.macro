@@ -22,7 +22,15 @@
             Total de items: [ <b>{{shop.catalogs[type]|length }} </b> ] 
           </h3>
           <div class="panel-body catalogWidget_{{type}}"  omni-catalog-id="{{catalog.catalogID}}" omni-catalog-limit={{limit}}>
-            <div class="catalogContainer row"></div>
+            <div class="catalogContainer row">
+              
+            <span class="loading">
+            Carregando catalogo [ {{catalog.catalogName}} ]
+            <hr>
+            <img src="{{theme_cdn_dir}}/static/img/loading.gif">
+          </span>
+
+            </div>
              <span class="catalogControlInformation"></span>
              <span class="catalogControlNavigation"></span>
           </div>
@@ -35,7 +43,15 @@
       <div class="panel panel-default">
         <div class="panel-heading">{{catalog.catalogName}}</div>
         <div class="panel-body catalogWidget_{{type}}"  omni-catalog-id="{{catalog.catalogID}}" omni-catalog-limit={{limit}}>
-            <div class="catalogContainer row"></div>
+            <div class="catalogContainer row">
+          
+          <span class="loading">
+            Carregando catalogo [  {{catalog.catalogName}} ]
+            <hr>
+            <img src="{{theme_cdn_dir}}/static/img/loading.gif">
+          </span>
+
+            </div>
            <span class="catalogControlInformation"></span>
            <span class="catalogControlNavigation"></span>
         </div>

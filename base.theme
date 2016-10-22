@@ -25,29 +25,66 @@
 
 
 
+
+<script type="text/template" id="shipping_price_render_template">
+
+
+<%- shippingPrice %>
+
+<%- shippingEta %>
+
+<%- message %>
+
+  <span class="loading">
+  Carregando Valor do frete...
+  <hr>
+
+
+</script>
+
 <script type="text/template" id="shipping_calculator_render_template">
 
 
+<hr>    
 <div>
       <a class="btn btn-primary btn-lg omni_dismiss omni-action">
       Sair
       </a>
 
 </div>
+<hr>
 <div>
 <form name="formCep_<%- id %>">
       Cep:
       <input type="text" name="zipCode">
+
+      <span class="zipCode_EmptyMessage">
+      Please, fill with a valid zip code...
+      </span>
+      
       <hr>
       Qt itens:
       <input type="text" name="itemQT" value="<%- itemQT %>">
+      <span class="itemQT_EmptyMessage">
+        Please, fill with a valid quantity...
+      </span>
 </form>
+<hr>
 
-      <a class="btn btn-block btn-info btn-lg omni_shipping_estimate omni-action">
-      Estimar Frete
-      </a>
+
+
+  <a class="btn btn-block btn-info btn-lg omni_shipping_estimate omni-action">
+  Estimar Frete
+  </a>
 
 </div>
+
+  <span class="loading">
+  Carregando estimativas de frete.
+  <hr>
+  <img src="{{theme_cdn_dir}}/static/img/loading.gif">
+  </span>
+
 
 </script>
 
