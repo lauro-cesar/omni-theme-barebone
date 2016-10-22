@@ -29,15 +29,28 @@
 <script type="text/template" id="shipping_price_render_template">
 
 
-<%- shippingPrice %>
 
-<%- shippingEta %>
+<% if(isAvailable) { %>
 
-<%- message %>
+<span>
+Valor do frete: <%- price %>
+</span>
 
-  <span class="loading">
-  Carregando Valor do frete...
+<span>
+Prazo estimado: <%- eta %>
+</span>
+
+<% } %>
+
+<% _.each( msgError, function(erro, index, list) { %>
+       <%- erro %>
+<% } ) %>
+
+  <span class="shipping-price">
   <hr>
+   Conectando com o transportador...
+  </span>
+
 
 
 </script>

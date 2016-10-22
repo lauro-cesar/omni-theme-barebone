@@ -19,7 +19,7 @@
         <div class="jumbotron">
           <h1>{{catalog.catalogName}} </h1>
           <h3>
-            Total de items: [ <b>{{shop.catalogs[type]|length }} </b> ] 
+            Total de items: [ <b>{{ catalog.total }} </b> ] 
           </h3>
           <div class="panel-body catalogWidget_{{type}}"  omni-catalog-id="{{catalog.catalogID}}" omni-catalog-limit={{limit}}>
             <div class="catalogContainer row">
