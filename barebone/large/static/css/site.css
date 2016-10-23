@@ -2,7 +2,9 @@
 .separator {
 	height: 20px;
 }
-
+.catalogContainer {
+	min-height: 800px;
+}
 
 #footer {
    left:0px;

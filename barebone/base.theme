@@ -34,10 +34,12 @@
 
 <span>
 Valor do frete: <%- price %>
+<hr>
 </span>
 
 <span>
 Prazo estimado: <%- eta %>
+<hr>
 </span>
 
 <% } %>
