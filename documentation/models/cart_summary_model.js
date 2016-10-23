@@ -4,7 +4,8 @@ var CartSummaryModel = Backbone.Model.extend({
         return {
             subTotal:'R$ 0.00',
             grandTotal:'R$ 0.00',
-            isReady:false
+            isReady:false,
+            zipCode:false
         }
     }
   });
