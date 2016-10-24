@@ -1,5 +1,5 @@
 {{ '{% extends' }}  "{{themeDir}}/base.theme" {{ '%}' }}
-
+{% raw %} {% import {% endraw %} "{{themeDir}}/large/templates_underscore.macro" {% raw %} as underscoreTemplates with context %} {% endraw %}
 
 
 {% raw %}
@@ -49,8 +49,9 @@
 	            Some Error occured...
 	            </div>
 			</div>
-			<div class="row">
 
+			<!-- Search Engine Row -->
+			<div class="row">
 				<div class="col-md-1 col-lg-1"></div>
 				<div class="searchEngine col-md-10 col-lg-10">
 					<span class="input-group">
@@ -62,14 +63,16 @@
 				</div>
 				<div class="col-md-1 col-lg-1"></div>
 			</div>
+			<!-- Search Engine Row End -->
+
+
 			<div class="separator"></div>
 
 			<!-- Page Detail  -->
-
 			<div class="pages minSize" id="page-detailPage"></div>
-
-
 			<!-- End Page Detail -->
+
+
 			<!-- Home page Large -->
 			<div class="pages minSize" id="page-homePage">
 			

@@ -1,6 +1,6 @@
 {% raw %}
 
-{# Campos disponiveis para o controlador
+{# comment: Campos disponiveis para o controlador
 
   objeto
     'total':response.total,
@@ -25,7 +25,7 @@
 #}
 
 
-{#
+{# comment:
 
 Template universal para o controlador do catalogo. Adicionado argumento type
 
@@ -37,20 +37,10 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
 
 
 
-{% macro addToCartPageTemplate(viewSize='large') %}
-
-{% include {% endraw %} "{{themeDir}}/{{viewSize}}/templates/shipping_calculator.theme" {% raw %} %} 
-
-{% endmacro %}
-
-
-
-
 {% macro catalog_control_navigation_template(cssClass="control",type="default") %}
 
 
 {% if type =="default" %}
-
 <nav aria-label="page navigation">
 
   <ul class="pagination">
@@ -59,17 +49,13 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
       <% } ) %>    
     </ul>
 </nav>
-
-
 {% endif %}
-{% endmacro %}
-
-{% macro catalog_control_information_template(cssClass="control",type="default") %}
-
 
 {% endmacro %}
 
-{#
+
+
+{# comment:
 
 Template universal para o anuncio do produto, adicionado argumento type.
 Adicionado atributo photos ao modelo adModel, como um array de objetos.
@@ -144,35 +130,12 @@ Exemplo de uso
 
 
 
-<div class="panel panel-primary minimo">
+<div class="panel panel-info minimo">
   <div class="panel-heading">
-  
-      
-        <div class="row">
-
-          <div class="col-md-8 col-xs-8 col-lg-8">
-              <h4 class="titulo">
-               <%- adTitle %>
-              </h4>
-          </div>
-
-
-
-
-          <div class="col-md-2 col-xs-2 col-lg-2">
-              <span class="titulo pull-right">
-                  <%- itemPriceLabel %>
-              </span>         
-          </div>
-
-          <div class="col-md-2 col-xs-2 col-lg-2">
-              <a class="btn btn-block btn-warning buy_item" href="<%- perma_path %>" role="button">Comprar</a>
-          </div>
-
-        </div>
-
-
+      <%- adTitle %>
   </div>
+
+  
   <div class="panel-body">
 
 
