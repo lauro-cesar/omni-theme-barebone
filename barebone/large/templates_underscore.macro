@@ -1,43 +1,10 @@
 {% raw %}
 
-{# comment: Campos disponiveis para o controlador
-
-  objeto
-    'total':response.total,
-    'limit':response.limit,
-    'num_pages':response.num_pages,
-    'page':response.page,
-    'query':response.query,
-    'category':response.category,
-    'offset':response.offset
-    'offset_previous':response.offset_previous,
-    'offset_next':response.offset_next,
-    'hasPrevious':response.hasPrevious,
-    'hasNext':response.hasNext
-  
-
-  Catalogo responde aos eventos:
-
-  "click .next_page"        : "next_page",
-  "click .append_next_page" : "append_next_page", #Para criar o efeito de scroll infinito
-  "click .previus_page"     : "previus_page",
-  "click .reset_catalog"    : "reset_catalog"
-#}
-
-
-{# comment:
-
-Template universal para o controlador do catalogo. Adicionado argumento type
-
-Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hidden', ou mudar a estratégia de mostrar os botoes..
-
-#}
 
 
 {% macro catalog_control_information_template(cssClass="control",type="default") %}
 
 {% endmacro %}
-
 
 {% macro catalog_control_navigation_template(cssClass="control",type="default") %}
 
@@ -54,30 +21,6 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
 {% endif %}
 
 {% endmacro %}
-
-
-
-{# comment:
-
-Template universal para o anuncio do produto, adicionado argumento type.
-Adicionado atributo photos ao modelo adModel, como um array de objetos.
-
-Exemplo de uso
-
-    <% _.each( photos, function(photo, index, list) { %>
-      <div class="image">
-      <img  width=32px src="<%- photo.photoSrc %>">
-      <span> <%- photo.photoCaption %> </span>
-      </div>
-    <% } ) %>    
-
-
-#}
-
-
-
-
-
 
 {% macro ad_view_template(cssClass="default",type="default") %}
 
@@ -137,22 +80,45 @@ Exemplo de uso
       <%- adTitle %>
   </div>
 
-
+  
   <div class="panel-body">
+
+
 
 
   <div class="row">
 
   <div class="col-md-8">
 
-  <div class="Galeria">
-        <% _.each( photos, function(photo, index, list) { %>
-      <div class="image">
-        <img  width=256px src="/photos/gallery_image/<%- photo.photoID %>/256/">
-      <span> <%- photo.photoCaption %> </span>
-      </div>
-    <% } ) %>   
-  </div>
+
+<% if( photos.length > 0 ) { %>
+
+
+<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
+	<a href="/photos/best_image/<%- adID %>/1024/">
+		<img src="/photos/best_image/<%- adID %>/512/" alt="" width="512" height="512" />
+	</a>
+</div>
+
+<ul class="thumbnails">
+   <% _.each( photos, function(photo, index, list) { %>
+   <li>
+	<a href="/photos/gallery_image/<%- photo.photoID %>/1024/"  data-standard="/photos/gallery_image/<%- photo.photoID %>/1024/">
+		<img src="/photos/gallery_image/<%- photo.photoID %>/64/" alt="<%- photo.photoCaption %>" />
+	</a>
+</li>
+    <% } ) %>  
+</ul>
+
+  <% } else { %>
+
+
+  <img width=512px height=512px src="/photos/best_image/<%- adID %>/512/" >
+
+  <% } %>
+
+
+
 </div>
 <div class="col-md-4">
     <span><%= adContentText %></span>
@@ -175,17 +141,9 @@ Exemplo de uso
           
 
 </span>
-
 </div>
 </div>
-
 </div>
-
-
-    
-
-
-
 
 {% endmacro %}
 

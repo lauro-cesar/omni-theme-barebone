@@ -1,6 +1,4 @@
 {% raw %} {% import {% endraw %} "{{themeDir}}/templates_jinja.macro" {% raw %} as jinjaTemplates with context %} {% endraw %}
-{% raw %} {% import {% endraw %} "{{themeDir}}/templates_underscore.macro" {% raw %} as underscoreTemplates with context %} {% endraw %}
-
 
 {% raw %}
 {% extends "2.1/omni.theme" %}
@@ -8,6 +6,7 @@
 
 {%- block OMNI_EXTRA_CSS_HEADER -%}
 <link href="{{theme_cdn_dir}}/{{shop.viewSize}}/static/css/site.css?nocache={{nocache}}" rel="stylesheet">
+<link rel="stylesheet" href="/css/easyzoom.css" />
 {%- endblock -%}
 
 
@@ -19,153 +18,6 @@
 <!-- wee split the page in three main rows (OMNI_DOCUMENT_BODY_HEADER, OMNI_DOCUMENT_BODY adn OMNI_DOCUMENT_BODY_FOOTER) -->
 <!-- This block represent the top of a page -->
 {%- block OMNI_DOCUMENT_BODY_HEADER -%}
-<!-- Start printing javascript underscore Templates -->
-
-
-
-
-
-
-<script type="text/template" id="shipping_price_render_template">
-
-
-
-<% if(isAvailable) { %>
-
-<span>
-Valor do frete: <%- price %>
-<hr>
-</span>
-
-<span>
-Prazo estimado: <%- eta %>
-<hr>
-</span>
-
-<% } %>
-
-<% _.each( msgError, function(erro, index, list) { %>
-       <%- erro %>
-<% } ) %>
-
-  <span class="shipping-price">
-  <hr>
-   Conectando com o transportador...
-  </span>
-
-
-
-</script>
-
-<script type="text/template" id="shipping_calculator_render_template">
-
-
-<hr>    
-<div>
-      <a class="btn btn-primary btn-lg omni_dismiss omni-action">
-      Sair
-      </a>
-
-</div>
-<hr>
-<div>
-<form name="formCep_<%- id %>">
-      Cep:
-      <input type="text" name="zipCode">
-
-      <span class="zipCode_EmptyMessage">
-      Please, fill with a valid zip code...
-      </span>
-      
-      <hr>
-      Qt itens:
-      <input type="text" name="itemQT" value="<%- itemQT %>">
-      <span class="itemQT_EmptyMessage">
-        Please, fill with a valid quantity...
-      </span>
-</form>
-<hr>
-
-
-
-  <a class="btn btn-block btn-info btn-lg omni_shipping_estimate omni-action">
-  Estimar Frete
-  </a>
-
-</div>
-
-  <span class="loading">
-  Carregando estimativas de frete.
-  <hr>
-  <img src="{{theme_cdn_dir}}/static/img/loading.gif">
-  </span>
-
-
-</script>
-
-
-<script type="text/template" id="shipping_calculator_method_render_template">
-
- 
-<span>
-  <h2><%- label %></h2>
-</span>
-
-</script>
-
-
-<script type="text/template" id="ad_view_detail_template">
-  {{ underscoreTemplates.ad_view_detail_template() }}
-</script>
-
-<script type="text/template" id="ad_view_template_top">
-{{underscoreTemplates.ad_view_template(type="top",cssClass="top adView")}}
-</script>
-
-<script type="text/template" id="ad_view_template_default">
-{{underscoreTemplates.ad_view_template(type="default",cssClass="default adView")}}
-</script>
-
-<script type="text/template" id="ad_view_template_bottom">
-{{underscoreTemplates.ad_view_template(type="bottom",cssClass="bottom adView")}}
-</script>
-
-<script type="text/template" id="ad_view_template_left_sidebar">
-{{underscoreTemplates.ad_view_template(type="left_sidebar",cssClass="left_sidebar adView")}}
-</script>
-
-<script type="text/template" id="ad_view_template_exclusive">
-{{underscoreTemplates.ad_view_template(type="exclusive",cssClass="exclusive adView")}}
-</script>
-
-<script type="text/template" id="ad_view_template_right_sidebar">
-{{underscoreTemplates.ad_view_template(type="right_sidebar",cssClass="right_sidebar adView")}}
-</script>
-
-<!-- Navigation templates  -->
-<script type="text/template" id="catalog_control_navigation_template_default">
-{{ underscoreTemplates.catalog_control_navigation_template(cssClass="default {{viewSize}}",type="default") }}
-</script>
-
-<script type="text/template" id="catalog_control_navigation_template_exclusive">
-{{  underscoreTemplates.catalog_control_navigation_template(cssClass="exclusive",type="exclusive") }}
-</script>
-<!-- End navigation templates -->
-
-<!-- Information templates -->
-<script type="text/template" id="catalog_control_information_template_default">
-{{ underscoreTemplates.catalog_control_information_template(cssClass="default {{viewSize}}",type="default") }}
-</script>
-
-<script type="text/template" id="catalog_control_information_template_exclusive">
-{{  underscoreTemplates.catalog_control_information_template(cssClass="exclusive",type="exclusive") }}
-</script>
-<!-- End information templates -->
-
-
-<!-- End printing javascript underscore Templates -->
-
-
 <!-- start navbar -->
 <nav class="navbar navbar-inverse red navbar-fixed-top">
   <div class="container">
@@ -215,6 +67,17 @@ Prazo estimado: <%- eta %>
     <h1 class="text-center">
     Em construção
     </h1>
+</div>
+
+<div class="pages minSize container-fluid" id="page-mainContent">
+
+              <div class="pages" id=page-errorPage>
+              Some Error occured...
+              </div>
+              
+              <div class="pages minSize" id="page-remoteContentPage"></div>
+
+
 </div>
 {%- endblock -%}
 
@@ -268,6 +131,33 @@ Prazo estimado: <%- eta %>
 
 {%- endblock -%}
 
+{%- block OMNI_EXTRA_FOOTER_JS -%}
 
+<script src="/lib/easyzoom.js"></script>
+
+  <script>
+  $( document ).ready(function() {
+    var omniSetup = {
+      debugMode:true
+    };
+    new OmniMainView(omniSetup);
+
+
+        var easyzoom = $('.easyzoom').easyZoom();
+
+        var api1 = easyzoom.filter('.easyzoom--with-thumbnails').data('easyZoom');
+        $('.thumbnails').on('click', 'a', function(e) {      
+            var me=$(e.currentTarget);
+            e.preventDefault();
+            api1.swap(
+                me.data('standard'), 
+                me.attr('href'));
+        });
+
+
+});
+  </script>
+
+{%- endblock -%}
 
 {% endraw %}

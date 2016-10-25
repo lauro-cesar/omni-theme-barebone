@@ -25,19 +25,33 @@ var AdBase = Backbone.Model.extend({
         var me= this;
         return {
             itemQT:1,
+            itemSubTotal:'',
+            itemGrandTotal:'',
+            itemShippingPrice:'',
+            itemShippingETA:'',
+            deliveryMethodID:'',
+            deliveryMethodName:'',
+            itemCode:'',
+            itemBarCode:'',
+            sellerName:'',
+            sellerLogo:'',
+            sellerUrl:'',
+            itemTitle:'',
             adID:'',
-            permalink:'',
             adTitle:'',
             adBaitText:'',
             adContentText:'',
             itemPriceLabel:'',
+            itemPriceFormerLabel:'',
+            percentDiscountValue:'',
             total_in_stock:0,
             photos:[],
             hasZipCode:false,
             freeShipping:false,
             showShippingCalculator:false,
             perma_path:"#catalog",
-            itemSubTotal:'',
+            perma_link:"#catalog",
+            
             defaultImage:'https://lh3.googleusercontent.com/ig46kbAM6OftExddR8jakoRCLzkaYf1ZdOB8397SvP0fLEG9jHm2FZxO25CSbNA38HydGhfXho5kRk9zfi4'
         }
     }
