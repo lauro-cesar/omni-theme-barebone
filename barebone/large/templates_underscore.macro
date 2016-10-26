@@ -103,7 +103,7 @@
 <ul class="thumbnails">
    <% _.each( photos, function(photo, index, list) { %>
    <li>
-	<a href="/photos/gallery_image/<%- photo.photoID %>/1024/"  data-standard="/photos/gallery_image/<%- photo.photoID %>/1024/">
+	<a class="thumbnails" href="/photos/gallery_image/<%- photo.photoID %>/1024/"  data-standard="/photos/gallery_image/<%- photo.photoID %>/1024/">
 		<img src="/photos/gallery_image/<%- photo.photoID %>/64/" alt="<%- photo.photoCaption %>" />
 	</a>
 </li>

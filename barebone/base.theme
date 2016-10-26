@@ -132,32 +132,23 @@
 {%- endblock -%}
 
 {%- block OMNI_EXTRA_FOOTER_JS -%}
+  
 
-<script src="/lib/easyzoom.js"></script>
 
   <script>
   $( document ).ready(function() {
+
     var omniSetup = {
       debugMode:true
     };
     new OmniMainView(omniSetup);
+  })
 
 
-        var easyzoom = $('.easyzoom').easyZoom();
-
-        var api1 = easyzoom.filter('.easyzoom--with-thumbnails').data('easyZoom');
-        $('.thumbnails').on('click', 'a', function(e) {      
-            var me=$(e.currentTarget);
-            e.preventDefault();
-            api1.swap(
-                me.data('standard'), 
-                me.attr('href'));
-        });
-
-
-});
   </script>
-
 {%- endblock -%}
+
+
+
 
 {% endraw %}
