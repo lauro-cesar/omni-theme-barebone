@@ -1,26 +1,87 @@
 {% raw %}
 
 
+{% macro buy_buttons() %}
+    <a class="btn btn-block btn-success btn-lg omni_add_to_cart <%= (!inCart) ? 'show' : 'hidden'%> omni-action" role="button">Adicionar ao pedido</a>
+    <a class="btn btn-block btn-success btn-lg omni_go_to_cart <%= (inCart) ? 'show' : 'hidden'%> omni-action" role="button">Concluir pedido</a>
+    <a class="btn btn-block btn-warning btn-lg omni_remove_from_cart <%= (inCart) ? 'show' : 'hidden'%> omni-action" role="button">Remover do carrinho</a>
+{% endmacro %}
+
 
 {% macro catalog_control_information_template(cssClass="control",type="default") %}
 
+
+	{# sintaxe do jinja... #}
+	{% if type =="default" %}
+
+		{# sintaxe do underscore #}
+
+    
+
+
+
+		<% if( total > 0 && (query !== "any") )  { %>
+			<span>Encontramos [ <%- total %> ] itens.</span>
+		<% } %>
+			
+
+    <% if( total < 1 && (query !== "any") )  { %>
+      <span>Nada encontrado com:  [ <b><%- query %> </b> ]</span>
+		<% } %>
+		
+
+		
+
+	{% endif %}
+
+
 {% endmacro %}
+
+
 
 {% macro catalog_control_navigation_template(cssClass="control",type="default") %}
 
 
 {% if type =="default" %}
-<nav aria-label="page navigation">
 
+
+
+<% if( total > 0 ) { %>
+<nav aria-label="page navigation">
   <ul class="pagination">
+    
+
+    <li class="<%= (!hasPrevious) ? 'disabled' : '' %>">
+      <a class="previus_page " aria-label="Anterior">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    
       <% _.each( _.range(0,total,limit), function(element, index, list) { %>
        <li class="<%= (page == (index + 1)) ? 'active' : 'normal' %>"><a class="go_to_page " page-offset="<%= (limit * index) %>"><%= (index + 1) %>  </a></li>
-      <% } ) %>    
-    </ul>
+      <% } ) %>  
+
+
+    <li class="<%= (!hasNext) ? 'disabled' : '' %>">
+      <a class="next_page " aria-label="Próxima página">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+
+  </ul>
 </nav>
+<% } %>
 {% endif %}
 
 {% endmacro %}
+
+{% macro ad_view_cart_template() %}
+
+<%- adTitle %>
+
+{% endmacro %}
+
+
 
 {% macro ad_view_template(cssClass="default",type="default") %}
 
@@ -44,25 +105,29 @@
         </h2>
         </p>
     <div>
-      <a class="btn btn-block btn-success btn-lg omni_add_to_cart <%= (!inCart) ? 'show' : 'hidden'%> omni-action" role="button">Adicionar ao pedido</a>
-      <a class="btn btn-block btn-warning btn-lg omni_remove_from_cart <%= (inCart) ? 'show' : 'hidden'%> omni-action" role="button">Remover do carrinho</a>
-      <a  class="btn btn-primary btn-lg btn-block omni_more_info omni-action omni-page" href="<%- perma_path %>" >Ver mais detalhes</a>
-      <a class="btn btn-block btn-info btn-lg omni_shipping_calculator omni-action <%= (showShippingCalculator) ? 'show' : 'hidden'%> " >
-      Calcular frete
-      </a>
+
+{{buy_buttons()}}
+    <a  class="btn btn-primary btn-lg btn-block omni_more_info omni-action omni-page" href="<%- perma_path %>" >Ver mais detalhes</a>
+    <a class="btn btn-block btn-info btn-lg omni_shipping_calculator omni-action <%= (showShippingCalculator) ? 'show' : 'hidden'%> " >
+    Estimar frete
+    </a>
+	<div class="separator"></div>
+
+	<span class="shippingCalculatorContainer" shipping_price_render_template_id="#shipping_price_render_template" shipping_calculator_render_template_id="#shipping_calculator_render_template" shipping_calculator_method_render_template_id="#shipping_calculator_method_render_template">
+	          
+
+	          <span class="loading">
+	            Carregando estimativas de frete.
+	              <hr>
+	  <img src="{{theme_cdn_dir}}/static/img/loading.gif">
+	          </span>
+	          
+
+	</span>
 
 
-<span class="shippingCalculatorContainer" shipping_price_render_template_id="#shipping_price_render_template" shipping_calculator_render_template_id="#shipping_calculator_render_template" shipping_calculator_method_render_template_id="#shipping_calculator_method_render_template">
-          
 
-          <span class="loading">
-            Carregando estimativas de frete.
-              <hr>
-  <img src="{{theme_cdn_dir}}/static/img/loading.gif">
-          </span>
-          
 
-</span>
 
     </div>
       </div>
@@ -71,78 +136,150 @@
     
 {% endmacro %}
 
+
+
 {% macro ad_view_detail_template(cssClass="itemDetail") %}
 
 
+<span>
+	
+<ol class="breadcrumb">
+  <li><a class="omni-page" href="#home">Página inicial</a></li>
+  <li><a class="omni-page" href="#catalog">Catalogo</a></li>
+  <li class="active">
+  <%- itemTitle %>
+  </li>
+</ol>
 
-<div class="panel panel-info minimo">
+</span>
+
+<div class="panel panel-primary minimo">
   <div class="panel-heading">
-      <%- adTitle %>
+      <%- adTitle %> 
   </div>
 
-  
+
   <div class="panel-body">
 
 
 
 
-  <div class="row">
+ <div class="row">
 
-  <div class="col-md-8">
-
-
-<% if( photos.length > 0 ) { %>
-
-
-<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
-	<a href="/photos/best_image/<%- adID %>/1024/">
-		<img src="/photos/best_image/<%- adID %>/512/" alt="" width="512" height="512" />
-	</a>
-</div>
-
-<ul class="thumbnails">
+<div class="col-md-1">
    <% _.each( photos, function(photo, index, list) { %>
-   <li>
-	<a class="thumbnails" href="/photos/gallery_image/<%- photo.photoID %>/1024/"  data-standard="/photos/gallery_image/<%- photo.photoID %>/1024/">
-		<img src="/photos/gallery_image/<%- photo.photoID %>/64/" alt="<%- photo.photoCaption %>" />
+	<a class="img-responsive img-circle thumbnails" href="/photos/gallery_image/<%- photo.photoID %>/1024/"  data-standard="/photos/gallery_image/<%- photo.photoID %>/1024/">
+		<img width=128px src="/photos/gallery_image/<%- photo.photoID %>/128/" alt="<%- photo.photoCaption %>" />
 	</a>
-</li>
-    <% } ) %>  
-</ul>
+	<% } ) %> 
 
-  <% } else { %>
+</div>
+
+  <div class="col-md-6">
 
 
-  <img width=512px height=512px src="/photos/best_image/<%- adID %>/512/" >
+		<% if( photos.length > 0 ) { %>
 
-  <% } %>
+
+		<div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
+			<a href="/photos/best_image/<%- adID %>/1024/">
+				<img class="img-responsive" src="/photos/best_image/<%- adID %>/768/" alt="" width="768px" height="768px" />
+			</a>
+		</div>
+
+
+
+		  <% } else { %>
+
+
+		  <img width=1024px height=1024px src="/photos/best_image/<%- adID %>/1024/" >
+
+		  <% } %>
 
 
 
 </div>
-<div class="col-md-4">
-    <span><%= adContentText %></span>
+
+<div class="col-md-5">
+
+
+<span class="omni-info">
+
+<h1 class="title">
+	 <%- itemTitle %>
+</h1>
+<h3>
+	<%- adBaitText %>
+</h3>
 <hr>
 
-      <a class="btn btn-block btn-info btn-lg omni_shipping_calculator omni-action <%= (showShippingCalculator) ? 'show' : 'hidden'%> " >
-      Calcular frete
-      </a>
+<span class="pricing">
 
+<h1 class="text-primary">
+<%- itemPriceLabel %>
+</h1>
 
-<span class="shippingCalculatorContainer" shipping_price_render_template_id="#shipping_price_render_template" shipping_calculator_render_template_id="#shipping_calculator_render_template" shipping_calculator_method_render_template_id="#shipping_calculator_method_render_template">
+<% if (onSale) { %>
+<h3>Somente hoje <span class="label label-info"> <%- percentDiscountValue %> % </span></h3>
 
-  
- 
-          <span class="loading">
-           Carregando estimativas
-             <hr>
-  <img src="{{theme_cdn_dir}}/static/img/loading.gif">
-          </span>
-          
+<div class="alert alert-success" role="alert">
+	<strong>Em promoção!</strong> Esse produto custava <%- itemPriceFormerLabel %>
+</div>
+
+<% } %>	
+
+<% if (freeShipping) { %>
+<h3><span class="label label-primary">Frete Grátis</span> Somente hoje! </h3>
+<% } %>	
 
 </span>
+
+<hr>
+
+
+</span>
+
+<span class="omni-buttons">
+
+
+
+
+  {{buy_buttons()}}
+    <a class="btn btn-block btn-info btn-lg omni_shipping_calculator omni-action <%= (showShippingCalculator) ? 'show' : 'hidden'%> " >
+    Estimar frete
+    </a>
+		<div class="separator"></div>
+
+
+		<span class="shippingCalculatorContainer" shipping_price_render_template_id="#shipping_price_render_template" shipping_calculator_render_template_id="#shipping_calculator_render_template" shipping_calculator_method_render_template_id="#shipping_calculator_method_render_template">
+
+			<span class="loading">
+				Carregando opções de frete<hr>
+				<img width=32px src="{{theme_cdn_dir}}/static/img/loading.gif">
+			</span>
+		</span>
+
+
+</span>
+
+
 </div>
 </div>
+
+<div class="row">
+
+<div class="col-md-1"></div>
+<div class="col-md-10">
+	
+<span><%= adContentText %></span>
+
+</div>
+<div class="col-md-1"></div>
+
+
+
+</div>
+
 </div>
 
 {% endmacro %}

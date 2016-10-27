@@ -43,14 +43,37 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
 
 
 {% if type =="default" %}
-<nav aria-label="page navigation">
 
+
+<nav aria-label="page navigation">
   <ul class="pagination">
+    
+
+    <li>
+      <a class="previus_page <%= (!hasNext) ? 'disabled' : '' %>" aria-label="Anterior">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    
       <% _.each( _.range(0,total,limit), function(element, index, list) { %>
        <li class="<%= (page == (index + 1)) ? 'active' : 'normal' %>"><a class="go_to_page " page-offset="<%= (limit * index) %>"><%= (index + 1) %>  </a></li>
-      <% } ) %>    
-    </ul>
+      <% } ) %>  
+
+
+    <li>
+      <a class="next_page <%= (!hasPrevious) ? 'disabled' : '' %>"" aria-label="Próxima página">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+
+  </ul>
 </nav>
+
+
+
+
+
+
 {% endif %}
 
 {% endmacro %}
@@ -105,7 +128,7 @@ Exemplo de uso
       <a class="btn btn-block btn-warning btn-lg omni_remove_from_cart <%= (inCart) ? 'show' : 'hidden'%> omni-action" role="button">Remover do carrinho</a>
       <a  class="btn btn-primary btn-lg btn-block omni_more_info omni-action omni-page" href="<%- perma_path %>" >Ver mais detalhes</a>
       <a class="btn btn-block btn-info btn-lg omni_shipping_calculator omni-action <%= (showShippingCalculator) ? 'show' : 'hidden'%> " >
-      Calcular frete
+      Estimar frete
       </a>
 
 
@@ -159,7 +182,7 @@ Exemplo de uso
 <hr>
 
       <a class="btn btn-block btn-info btn-lg omni_shipping_calculator omni-action <%= (showShippingCalculator) ? 'show' : 'hidden'%> " >
-      Calcular frete
+      Estimar frete
       </a>
 
 

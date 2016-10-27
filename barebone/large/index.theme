@@ -11,17 +11,24 @@
 <script type="text/template" id="shipping_price_render_template">
 
 
-
+{# Verificando se o metodo esta disponivel #}
 <% if(isAvailable) { %>
 
 <span>
-Valor do frete: <%- price %>
-<hr>
+<h3>
+Valor do frete</h3>
+<h2 class="text-info">
+<%- price %>
+</h2>
 </span>
 
 <span>
-Prazo estimado: <%- eta %>
-<hr>
+<h3>
+Prazo estimado após postagem
+</h3>
+<h2 class="text-info">
+<%- eta %>
+</h2>
 </span>
 
 <% } %>
@@ -31,69 +38,109 @@ Prazo estimado: <%- eta %>
 <% } ) %>
 
   <span class="shipping-price">
-  <hr>
-   Conectando com o transportador...
+   Conectando com o transportador.
+   <br>
+   <img width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
   </span>
-
-
 
 </script>
 
 <script type="text/template" id="shipping_calculator_render_template">
 
 
-<hr>    
-<div>
-      <a class="btn btn-primary btn-lg omni_dismiss omni-action">
-      Sair
-      </a>
 
-</div>
-<hr>
-<div>
-<form name="formCep_<%- id %>">
-      Cep:
-      <input type="text" name="zipCode">
-
-      <span class="zipCode_EmptyMessage">
-      Please, fill with a valid zip code...
-      </span>
-      
-      <hr>
-      Qt itens:
-      <input type="text" name="itemQT" value="<%- itemQT %>">
-      <span class="itemQT_EmptyMessage">
-        Please, fill with a valid quantity...
-      </span>
-</form>
-<hr>
+<!-- <div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  	<p>
+  		O valor final do frete será calculado no fechamento do pedido, alguns itens podem oferecer descontos ou acréscimos dependendo das opções do pedido.
+	</p>
+</div> -->
 
 
 
-  <a class="btn btn-block btn-info btn-lg omni_shipping_estimate omni-action">
-  Estimar Frete
+<form class="form-horizontal" name="formCep_<%- id %>">
+  <div class="form-group">
+    <label class="col-sm-4 control-label">Cep de destino</label>
+    <div class="col-sm-8">
+
+      <input type="text" name="zipCode" class="form-control"  placeholder="CEP">
+
+		<p class="text-danger zipCode_EmptyMessage">
+		Preencha com um CEP válido.
+		</p>
+
+
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label  class="col-sm-4 control-label">Qt itens</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control"  placeholder="CEP" name="itemQT" value="<%- itemQT %>">
+		<p class="text-danger itemQT_EmptyMessage">
+		Preencha com um valor válido.
+		</p>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-4 col-sm-4">
+   <a class="btn btn-info btn-sm omni_shipping_estimate omni-action" role="button">
+  Calcular frete
   </a>
+    </div>
+    <div class="col-sm-4">
+      <a class="btn btn-primary btn-sm omni_dismiss omni-action scrolltoup" role="button">
+   	Fechar
+  </a>
+    </div>
 
-</div>
+
+  </div>
+</form>
+
+
 
   <span class="loading">
   Carregando estimativas de frete.
-  <hr>
-  <img src="{{theme_cdn_dir}}/static/img/loading.gif">
+  <img width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
   </span>
 
+</script>
+
+
+<script type="text/template" id="shipping_calculator_method_render_template"> 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%- label %></h3>
+  </div>
+  <div class="panel-body">
+   <span class="shippingPriceContainer"> 
+   	
+   </span>
+  </div>
+</div>
+
+
+
+
+
+
 
 </script>
 
 
-<script type="text/template" id="shipping_calculator_method_render_template">
-
- 
-<span>
-  <h2><%- label %></h2>
-</span>
-
+<script type="text/template" id="ad_view_cart_template">
+  {{ underscoreTemplates.ad_view_cart_template() }}
 </script>
+
+
+
 
 
 <script type="text/template" id="ad_view_detail_template">
