@@ -7,6 +7,15 @@
 {%- block OMNI_EXTRA_CSS_HEADER -%}
 <link href="{{theme_cdn_dir}}/{{shop.viewSize}}/static/css/site.css?nocache={{nocache}}" rel="stylesheet">
 <link rel="stylesheet" href="/css/easyzoom.css" />
+
+<style type="text/css">
+  
+li.showIfDisconnected , li.showIfConnected, li.showWithOrder {
+  display: none;
+}
+
+
+</style>
 {%- endblock -%}
 
 
@@ -31,6 +40,8 @@
     </div>
 
     
+
+
     <div class="collapse navbar-collapse" id="omniMenu">
       <ul class="nav navbar-nav">
             {% if shop.links['navbar'] %}
@@ -45,8 +56,50 @@
                 {{shop.links['tools']['widget']}}
             {% endif %}
       </ul>
-      <ul class="nav navbar-nav navbar-right" id="account">
-       <li class="show my_order_button" ></li>
+      <ul class="nav navbar-nav navbar-right" id="account_links">
+      <!-- 
+      
+      Start this links hidden, let omniApp change visibility  
+
+      Links Keys:
+      account_home,account_login,account_create,account_logout,account_order,account_orders
+      
+      Links helper classes:
+      showIfConnected, showWithOrder ,showIfDisconnected
+
+      -->
+        {% if shop.links['account'] %}
+        {% set links=shop.links['account'].itens %}
+          
+          <!-- Pagina do pedido atual, o checkout é realizado nessa página -->
+          
+          <li class="userAccountContainer showIfConnected" tagName="a" className="item" omni-user_account_template_id="#user_account_welcome_link"></li>
+          
+          <li class="showWithOrder">
+          <a href="{{ links['account_order'].href }}" class="item {{ links['account_order'].cssClass }}" itemid="{{links['account_order'].id}}">
+          {{ links['account_order'].label}}
+          </a>
+          </li>
+
+          <li class="showIfConnected">
+          <a href="{{ links['account_home'].href }}" class="item {{ links['account_home'].cssClass }}" itemid="{{links['account_home'].id}}">
+          {{ links['account_home'].label}}
+          </a>
+          </li>
+          
+          <li class="showIfDisconnected">
+          <a href="{{ links['account_login'].href }}" class="item {{ links['account_login'].cssClass }}" itemid="{{links['account_login'].id}}">
+          {{ links['account_login'].label}}
+          </a>
+          </li>
+
+
+          <li class="showIfConnected">
+          <a href="{{ links['account_logout'].href }}" class="item {{ links['account_logout'].cssClass }}" itemid="{{links['account_logout'].id}}">
+          {{ links['account_logout'].label}}
+          </a>
+          </li>
+        {% endif %}
       </ul>
     </div>
   </div>
@@ -70,14 +123,10 @@
 </div>
 
 <div class="pages minSize container-fluid" id="page-mainContent">
-
               <div class="pages" id=page-errorPage>
               Some Error occured...
               </div>
-              
               <div class="pages minSize" id="page-remoteContentPage"></div>
-
-
 </div>
 {%- endblock -%}
 

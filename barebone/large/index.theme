@@ -135,6 +135,69 @@ Prazo estimado após postagem
 </script>
 
 
+
+
+<script type="text/template" id="user_account_welcome_link">
+
+<% if (connected) { %>
+	Seja bem vindo <%- accountName %>
+<% }  %>
+	
+</script>
+
+
+<script type="text/template" id="user_account_widget">
+  
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Dados da conta</h3>
+  </div>
+  <div class="panel-body">
+
+
+<form class="form-horizontal form-account"  name="formAccount_<%- sessionID %>">
+  
+
+  <div class="form-group">
+  <label for="accountName" class="col-sm-2 control-label" >Nome completo</label>
+  
+  <div class="col-sm-10"> 
+    <input type="text" name="accountName" id="accountName" value="<%- accountName %>" class="form-control" aria-describedby="helpBlock">
+    <span id="helpBlock" class="help-block">Seu nome completo</span>
+  </div>
+  </div>
+
+  <div class="form-group">
+  <label for="accountEmail" class="col-sm-2 control-label" >Email de contato</label>
+  
+  <div class="col-sm-10"> 
+    <input type="text" name="accountEmail" id="accountEmail" value="<%- accountEmail %>" class="form-control" aria-describedby="helpBlock">
+    <span id="helpBlock" class="help-block">Email para receber os avisos de acompanhamento de pedidos</span>
+  </div>
+  </div>
+
+
+<div class="form-group">
+ <label for="accountPhone" class="col-sm-2 control-label" >Telefone de contato</label>
+
+  <div class="col-sm-10">
+  <input type="text" name="accountPhone" id="accountPhone" value="<%- accountPhone %>"  class="form-control" aria-describedby="helpBlock">
+  <span id="helpBlock" class="help-block">Opcional, mas nos ajuda a lhe retornar rapidamente</span>
+</div>
+  
+</div>
+</form>
+
+  <div class="col-sm-offset-1 col-sm-11">
+    <button class="btn btn-primary save_account">Salvar</button>
+  </div>
+
+
+  </div>
+</div>
+</script>
+
+
 <script type="text/template" id="ad_view_cart_template">
   {{ underscoreTemplates.ad_view_cart_template() }}
 </script>
@@ -265,6 +328,15 @@ Prazo estimado após postagem
 			<div class="pages minSize" id="page-detailPage"></div>
 			<!-- End Page Detail -->
 
+			<!-- Start Page Account -->
+			<div class="pages minSize" id="page-account">
+
+			<span class="userAccountContainer showIfConnected" tagName="div" className="userAccount" omni-user_account_template_id="#user_account_widget">
+				
+			</span>
+      
+			</div>
+			<!-- End Page account -->
 
 			<!-- Home page Large -->
 			<div class="pages minSize" id="page-homePage">

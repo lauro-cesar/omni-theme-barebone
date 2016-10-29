@@ -192,7 +192,7 @@
 		  <% } else { %>
 
 
-		  <img width=1024px height=1024px src="/photos/best_image/<%- adID %>/1024/" >
+		  <img class="img-responsive" width=1024px height=1024px src="/photos/best_image/<%- adID %>/1024/" >
 
 		  <% } %>
 

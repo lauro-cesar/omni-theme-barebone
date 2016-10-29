@@ -6,6 +6,10 @@
 	min-height: 800px;
 }
 
+.account_link {
+  display: none;
+}
+
 .thumbnails {
   overflow: hidden;
   margin: 1em 0;
