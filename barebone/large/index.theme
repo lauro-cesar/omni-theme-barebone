@@ -162,7 +162,7 @@ Prazo estimado após postagem
   <label for="accountName" class="col-sm-2 control-label" >Nome completo</label>
   
   <div class="col-sm-10"> 
-    <input type="text" name="accountName" id="accountName" value="<%- accountName %>" class="form-control" aria-describedby="helpBlock">
+    <input type="text" name="accountName" placeholder="Seu nome completo" id="accountName" value="<%- accountName %>" class="form-control" aria-describedby="helpBlock">
     <span id="helpBlock" class="help-block">Seu nome completo</span>
   </div>
   </div>
@@ -171,7 +171,7 @@ Prazo estimado após postagem
   <label for="accountEmail" class="col-sm-2 control-label" >Email de contato</label>
   
   <div class="col-sm-10"> 
-    <input type="text" name="accountEmail" id="accountEmail" value="<%- accountEmail %>" class="form-control" aria-describedby="helpBlock">
+    <input type="text" name="accountEmail" id="accountEmail" placeholder="Email de contato" value="<%- accountEmail %>" class="form-control" aria-describedby="helpBlock">
     <span id="helpBlock" class="help-block">Email para receber os avisos de acompanhamento de pedidos</span>
   </div>
   </div>
@@ -181,7 +181,7 @@ Prazo estimado após postagem
  <label for="accountPhone" class="col-sm-2 control-label" >Telefone de contato</label>
 
   <div class="col-sm-10">
-  <input type="text" name="accountPhone" id="accountPhone" value="<%- accountPhone %>"  class="form-control" aria-describedby="helpBlock">
+  <input type="text" name="accountPhone" placeholder="Telefone de contato" id="accountPhone" value="<%- accountPhone %>"  class="form-control" aria-describedby="helpBlock">
   <span id="helpBlock" class="help-block">Opcional, mas nos ajuda a lhe retornar rapidamente</span>
 </div>
   
@@ -330,11 +330,11 @@ Prazo estimado após postagem
 
 			<!-- Start Page Account -->
 			<div class="pages minSize" id="page-account">
+	
+			<span class="userAccountContainer showIfConnected" tagName="div" className="userAccount" omni-user_account_template_id="#user_account_widget"></span>
+      	
 
-			<span class="userAccountContainer showIfConnected" tagName="div" className="userAccount" omni-user_account_template_id="#user_account_widget">
-				
-			</span>
-      
+
 			</div>
 			<!-- End Page account -->
 
@@ -350,6 +350,10 @@ Prazo estimado após postagem
 
 			
 			{{ jinjaTemplates.containerCatalog(type="bottom",limit=6,titulo="Catalogos rodapé") }}
+
+
+
+
 			</div>
 			<!-- End home page Large -->
 

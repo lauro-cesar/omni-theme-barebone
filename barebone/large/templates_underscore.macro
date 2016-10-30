@@ -106,7 +106,7 @@
         </p>
     <div>
 
-{{buy_buttons()}}
+    {{buy_buttons()}}
     <a  class="btn btn-primary btn-lg btn-block omni_more_info omni-action omni-page" href="<%- perma_path %>" >Ver mais detalhes</a>
     <a class="btn btn-block btn-info btn-lg omni_shipping_calculator omni-action <%= (showShippingCalculator) ? 'show' : 'hidden'%> " >
     Estimar frete
