@@ -8,6 +8,37 @@
 
 <!-- Start printing javascript underscore Templates -->
 
+
+<!-- 
+
+itemSubTotal:'',
+itemGrandTotal:'',
+itemShippingPrice:'',
+itemShippingETA:'',
+deliveryMethodID:'',
+deliveryMethodName:'',
+itemCode:'',
+itemBarCode:'',
+sellerName:'',
+sellerLogo:'',
+sellerUrl:'',
+itemTitle:'',
+adID:'',
+adTitle:'',
+
+ -->
+
+
+<script type="text/template" id="item_in_cart_id">
+	
+<a class="remove_from_cart">
+Remover 
+</a>
+	<b><%- adTitle %></b> - <%- itemTitle %>
+	<hr>
+
+</script>
+
 <script type="text/template" id="shipping_price_render_template">
 
 
@@ -327,6 +358,44 @@ Prazo estimado após postagem
 			<!-- Page Detail  -->
 			<div class="pages minSize" id="page-detailPage"></div>
 			<!-- End Page Detail -->
+
+			<!-- Start Page Order  -->
+			<div class="pages minSize" id="page-cartPage">
+
+			<div class="container row">
+				<div class="col-md-8 col-lg-8">
+				
+					<div class="panel panel-primary cartContainer showWithOrder" tagName="div" className="main_cart" omni-main_cart_widget="#main_cart_widget">
+						<div class="panel-heading">
+							<h3 class="panel-title">Itens no pedido</h3>
+						</div>
+					<div class="panel-body cartRenderContainer" tagName="div" className="main_cart" omni-item_in_cart_id="#item_in_cart_id">
+
+					</div>
+					</div>
+
+
+				</div>
+				
+				<div class="col-md-4 col-lg-4">
+					<div class="panel panel-primary  showWithOrder">
+						<div class="panel-heading">
+							<h3 class="panel-title">Resumo</h3>
+						</div>
+					<div class="panel-body cartSummaryRenderContainer" tagName="div" className="main_cart_summary" omni-cart_summary_id="#cart_summary_id">
+
+					</div>
+					</div>
+
+				</div>
+
+
+			</div>
+			</div>
+			
+
+			<!-- Stop Page Order -->
+
 
 			<!-- Start Page Account -->
 			<div class="pages minSize" id="page-account">

@@ -76,8 +76,8 @@ li.showIfDisconnected , li.showIfConnected, li.showWithOrder {
           <li class="userAccountContainer showIfConnected" tagName="a" className="item" omni-user_account_template_id="#user_account_welcome_link"></li>
           
           <li class="showWithOrder">
-          <a href="{{ links['account_order'].href }}" class="item {{ links['account_order'].cssClass }}" itemid="{{links['account_order'].id}}">
-          {{ links['account_order'].label}}
+          <a href="{{ links['account_cart'].href }}" class="item {{ links['account_cart'].cssClass }}" itemid="{{links['account_cart'].id}}">
+          {{ links['account_cart'].label}}
           </a>
           </li>
 
