@@ -34,6 +34,10 @@ Voce precisa providenciar a declaracao de estilos para as classes: 'show'  e 'hi
 #}
 
 
+
+
+
+
 {% macro catalog_control_information_template(cssClass="control",type="default") %}
 
 {% endmacro %}

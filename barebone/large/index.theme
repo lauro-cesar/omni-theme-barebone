@@ -29,14 +29,24 @@ adTitle:'',
  -->
 
 
-<script type="text/template" id="item_in_cart_id">
+<script type="text/template" id="cart_seller_template">
 	
-<a class="remove_from_cart">
-Remover 
-</a>
-	<b><%- adTitle %></b> - <%- itemTitle %>
-	<hr>
 
+<h1><%- sellerName %></h1>
+
+<span>
+	Lista de itens da loja: <%- sellerName %>
+</span>
+
+</script>
+
+<script type="text/template" id="cart_summary_id">
+	{{underscoreTemplates.cart_summary() }}
+</script>
+
+
+<script type="text/template" id="item_in_cart_id">
+	{{ underscoreTemplates.item_in_cart_template() }}
 </script>
 
 <script type="text/template" id="shipping_price_render_template">
@@ -360,33 +370,53 @@ Prazo estimado após postagem
 			<!-- End Page Detail -->
 
 			<!-- Start Page Order  -->
-			<div class="pages minSize" id="page-cartPage">
+			<div class="pages minSize " id="page-cartPage">
 
-			<div class="container row">
-				<div class="col-md-8 col-lg-8">
+			<span class="cartSellerContainer showWithOrder">
+			
+			<span class="loading"></span>
+
+			<span class="cartSellerRenderContainer" omni-tagName="div" omni-className="main_cart_summary" omni-template_id-cart-seller-render="#cart_seller_template">
+			
+
+
+			</span>
+
 				
-					<div class="panel panel-primary cartContainer showWithOrder" tagName="div" className="main_cart" omni-main_cart_widget="#main_cart_widget">
+
+			</span>	
+			<div class="row">
+				<div class="col-md-8 col-lg-8">
+					<div class="panel panel-primary  showWithOrder cartContainer">
 						<div class="panel-heading">
 							<h3 class="panel-title">Itens no pedido</h3>
 						</div>
-					<div class="panel-body cartRenderContainer" tagName="div" className="main_cart" omni-item_in_cart_id="#item_in_cart_id">
+					<div class="panel-body cartRenderContainer" tagName="div" className="main_cart_summary" omni-cart_summary_id="#cart_summary_id">
+						
+			
+							<table class="table table-hover  table-striped cartRenderContainer" omni-tagName="tr" className="item_in_cart" omni-item_in_cart_id="#item_in_cart_id">
+								<tr>
+								<td>Ações</td>
+								<td></td>
+								<td>Item</td>
+								<td>Valor Unitário</td>
+								<td>Qt</td>
+								<td>SubTotal</td>
+								</tr>
+							</table>					
+					</div>
+
+
 
 					</div>
-					</div>
+
+
 
 
 				</div>
-				
-				<div class="col-md-4 col-lg-4">
-					<div class="panel panel-primary  showWithOrder">
-						<div class="panel-heading">
-							<h3 class="panel-title">Resumo</h3>
-						</div>
-					<div class="panel-body cartSummaryRenderContainer" tagName="div" className="main_cart_summary" omni-cart_summary_id="#cart_summary_id">
 
-					</div>
-					</div>
-
+				<div class="col-lg-4 col-md-48 cartSummaryContainer showWithOrder" tagName="div" className="panel panel-primary" omni-cart_summary_id="#cart_summary_id">
+					
 				</div>
 
 
