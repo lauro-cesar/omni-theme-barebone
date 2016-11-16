@@ -6,7 +6,7 @@
 
 {%- block OMNI_EXTRA_CSS_HEADER -%}
 <link href="{{theme_cdn_dir}}/{{shop.viewSize}}/static/css/site.css?nocache={{nocache}}" rel="stylesheet">
-<link rel="stylesheet" href="/css/easyzoom.css" />
+
 
 <style type="text/css">
   

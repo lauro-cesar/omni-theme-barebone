@@ -3,249 +3,47 @@
 
 
 {% raw %}
-
 {%- block OMNI_DOCUMENT_BODY_HEADER -%}
+{% endraw %}
 
-<!-- Start printing javascript underscore Templates -->
 
 
-<!-- 
+{#
+Usando includes para melhor leitura do codigo e manutencao dos templates
+#}
 
-itemSubTotal:'',
-itemGrandTotal:'',
-itemShippingPrice:'',
-itemShippingETA:'',
-deliveryMethodID:'',
-deliveryMethodName:'',
-itemCode:'',
-itemBarCode:'',
-sellerName:'',
-sellerLogo:'',
-sellerUrl:'',
-itemTitle:'',
-adID:'',
-adTitle:'',
+{{ '{% include' }}  '{{themeDir}}/large/underscore/cart_seller_template.theme'  {{ '%}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/cart_shopping.theme'  {{ '%}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/item_in_shopping_cart.theme'  {{ '%}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_price_render_template.theme'  {{ '%}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_calculator_render_template.theme'  {{ '%}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_calculator_method_render_template.theme'  {{ '%}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/user_account_welcome_link.theme'  {{ '%}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/user_account_widget.theme'  {{ '%}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/seller_container_template.theme'  {{ '%}' }}
 
- -->
+{% raw %}
 
 
-<script type="text/template" id="cart_seller_template">
-	
 
-<h1><%- sellerName %></h1>
 
-<span>
-	Lista de itens da loja: <%- sellerName %>
-</span>
 
-</script>
 
-<script type="text/template" id="cart_summary_id">
-	{{underscoreTemplates.cart_summary() }}
-</script>
 
 
-<script type="text/template" id="item_in_cart_id">
-	{{ underscoreTemplates.item_in_cart_template() }}
-</script>
 
-<script type="text/template" id="shipping_price_render_template">
 
 
-{# Verificando se o metodo esta disponivel #}
-<% if(isAvailable) { %>
 
-<span>
-<h3>
-Valor do frete</h3>
-<h2 class="text-info">
-<%- price %>
-</h2>
-</span>
 
-<span>
-<h3>
-Prazo estimado após postagem
-</h3>
-<h2 class="text-info">
-<%- eta %>
-</h2>
-</span>
 
-<% } %>
 
-<% _.each( msgError, function(erro, index, list) { %>
-       <%- erro %>
-<% } ) %>
 
-  <span class="shipping-price">
-   Conectando com o transportador.
-   <br>
-   <img width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
-  </span>
-
-</script>
-
-<script type="text/template" id="shipping_calculator_render_template">
-
-
-
-<!-- <div class="alert alert-warning alert-dismissible" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  	<p>
-  		O valor final do frete será calculado no fechamento do pedido, alguns itens podem oferecer descontos ou acréscimos dependendo das opções do pedido.
-	</p>
-</div> -->
-
-
-
-<form class="form-horizontal" name="formCep_<%- id %>">
-  <div class="form-group">
-    <label class="col-sm-4 control-label">Cep de destino</label>
-    <div class="col-sm-8">
-
-      <input type="text" name="zipCode" class="form-control"  placeholder="CEP">
-
-		<p class="text-danger zipCode_EmptyMessage">
-		Preencha com um CEP válido.
-		</p>
-
-
-    </div>
-
-  </div>
-
-  <div class="form-group">
-    <label  class="col-sm-4 control-label">Qt itens</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control"  placeholder="CEP" name="itemQT" value="<%- itemQT %>">
-		<p class="text-danger itemQT_EmptyMessage">
-		Preencha com um valor válido.
-		</p>
-    </div>
-
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-offset-4 col-sm-4">
-   <a class="btn btn-info btn-sm omni_shipping_estimate omni-action" role="button">
-  Calcular frete
-  </a>
-    </div>
-    <div class="col-sm-4">
-      <a class="btn btn-primary btn-sm omni_dismiss omni-action scrolltoup" role="button">
-   	Fechar
-  </a>
-    </div>
-
-
-  </div>
-</form>
-
-
-
-  <span class="loading">
-  Carregando estimativas de frete.
-  <img width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
-  </span>
-
-</script>
-
-
-<script type="text/template" id="shipping_calculator_method_render_template"> 
-
-
-
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%- label %></h3>
-  </div>
-  <div class="panel-body">
-   <span class="shippingPriceContainer"> 
-   	
-   </span>
-  </div>
-</div>
-
-
-
-
-
-
-
-</script>
-
-
-
-
-<script type="text/template" id="user_account_welcome_link">
-
-<% if (connected) { %>
-	Seja bem vindo <%- accountName %>
-<% }  %>
-	
-</script>
-
-
-<script type="text/template" id="user_account_widget">
-  
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h3 class="panel-title">Dados da conta</h3>
-  </div>
-  <div class="panel-body">
-
-
-<form class="form-horizontal form-account"  name="formAccount_<%- sessionID %>">
-  
-
-  <div class="form-group">
-  <label for="accountName" class="col-sm-2 control-label" >Nome completo</label>
-  
-  <div class="col-sm-10"> 
-    <input type="text" name="accountName" placeholder="Seu nome completo" id="accountName" value="<%- accountName %>" class="form-control" aria-describedby="helpBlock">
-    <span id="helpBlock" class="help-block">Seu nome completo</span>
-  </div>
-  </div>
-
-  <div class="form-group">
-  <label for="accountEmail" class="col-sm-2 control-label" >Email de contato</label>
-  
-  <div class="col-sm-10"> 
-    <input type="text" name="accountEmail" id="accountEmail" placeholder="Email de contato" value="<%- accountEmail %>" class="form-control" aria-describedby="helpBlock">
-    <span id="helpBlock" class="help-block">Email para receber os avisos de acompanhamento de pedidos</span>
-  </div>
-  </div>
-
-
-<div class="form-group">
- <label for="accountPhone" class="col-sm-2 control-label" >Telefone de contato</label>
-
-  <div class="col-sm-10">
-  <input type="text" name="accountPhone" placeholder="Telefone de contato" id="accountPhone" value="<%- accountPhone %>"  class="form-control" aria-describedby="helpBlock">
-  <span id="helpBlock" class="help-block">Opcional, mas nos ajuda a lhe retornar rapidamente</span>
-</div>
-  
-</div>
-</form>
-
-  <div class="col-sm-offset-1 col-sm-11">
-    <button class="btn btn-primary save_account">Salvar</button>
-  </div>
-
-
-  </div>
-</div>
-</script>
-
+{# TEmplates ainda no formato de macros... migrando depois...#}
 
 <script type="text/template" id="ad_view_cart_template">
   {{ underscoreTemplates.ad_view_cart_template() }}
 </script>
-
-
-
-
 
 <script type="text/template" id="ad_view_detail_template">
   {{ underscoreTemplates.ad_view_detail_template() }}
@@ -372,51 +170,22 @@ Prazo estimado após postagem
 			<!-- Start Page Order  -->
 			<div class="pages minSize " id="page-cartPage">
 
-			<span class="cartSellerContainer showWithOrder">
-			
-			<span class="loading"></span>
-
-			<span class="cartSellerRenderContainer" omni-tagName="div" omni-className="main_cart_summary" omni-template_id-cart-seller-render="#cart_seller_template">
-			
 
 
-			</span>
 
-				
 
-			</span>	
 			<div class="row">
+
 				<div class="col-md-8 col-lg-8">
-					<div class="panel panel-primary  showWithOrder cartContainer">
-						<div class="panel-heading">
-							<h3 class="panel-title">Itens no pedido</h3>
-						</div>
-					<div class="panel-body cartRenderContainer" tagName="div" className="main_cart_summary" omni-cart_summary_id="#cart_summary_id">
-						
-			
-							<table class="table table-hover  table-striped cartRenderContainer" omni-tagName="tr" className="item_in_cart" omni-item_in_cart_id="#item_in_cart_id">
-								<tr>
-								<td>Ações</td>
-								<td></td>
-								<td>Item</td>
-								<td>Valor Unitário</td>
-								<td>Qt</td>
-								<td>SubTotal</td>
-								</tr>
-							</table>					
-					</div>
-
-
-
-					</div>
-
-
-
-
+					<span class="sellerContainer showWithOrder">
+						<span class="loading"></span>
+						<span class="sellerRenderContainer" omni-tagName="div" omni-className="sellerContainer" omni-template_id="#seller_container_template">
+						<h2>Lista</h2>
+						</span>
+					</span>
 				</div>
 
-				<div class="col-lg-4 col-md-48 cartSummaryContainer showWithOrder" tagName="div" className="panel panel-primary" omni-cart_summary_id="#cart_summary_id">
-					
+				<div class="col-lg-4 col-md-48 cartShoppingContainer showWithOrder" tagName="div" className="panel panel-primary" omni-template_id="#cart_shopping_id">
 				</div>
 
 
