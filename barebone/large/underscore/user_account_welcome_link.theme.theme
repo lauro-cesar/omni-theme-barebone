@@ -1,0 +1,8 @@
+
+<script type="text/template" id="user_account_welcome_link">
+
+<% if (connected) { %>
+	Seja bem vindo <%- accountName %>
+<% }  %>
+	
+</script>

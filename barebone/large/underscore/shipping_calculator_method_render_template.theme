@@ -1,0 +1,22 @@
+<script type="text/template" id="shipping_calculator_method_render_template"> 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%- label %></h3>
+  </div>
+  <div class="panel-body">
+   <span class="shippingPriceContainer"> 
+   	
+   </span>
+  </div>
+</div>
+
+
+
+
+
+
+
+</script>

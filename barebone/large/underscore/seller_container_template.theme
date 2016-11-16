@@ -1,0 +1,8 @@
+<script type="text/template" id="seller_container_template">
+
+<h1><%- sellerName %></h1>
+<span>
+	Lista de itens da loja: <%- sellerName %>
+</span>
+
+</script>

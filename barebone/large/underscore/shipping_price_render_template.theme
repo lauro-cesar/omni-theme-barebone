@@ -1,0 +1,34 @@
+
+<script type="text/template" id="shipping_price_render_template">
+
+<% if(isAvailable) { %>
+<span>
+<h3>
+Valor do frete</h3>
+<h2 class="text-info">
+<%- price %>
+</h2>
+</span>
+
+<span>
+<h3>
+Prazo estimado após postagem
+</h3>
+<h2 class="text-info">
+<%- eta %>
+</h2>
+</span>
+
+<% } %>
+
+<% _.each( msgError, function(erro, index, list) { %>
+       <%- erro %>
+<% } ) %>
+
+  <span class="shipping-price">
+   Conectando com o transportador.
+   <br>
+   <img width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
+  </span>
+
+</script>
