@@ -13,8 +13,8 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 #}
 
 {{ '{% include' }}  '{{themeDir}}/large/underscore/cart_seller_template.theme'  {{ '%}' }}
-{{ '{% include' }}  '{{themeDir}}/large/underscore/cart_shopping.theme'  {{ '%}' }}
-{{ '{% include' }}  '{{themeDir}}/large/underscore/item_in_shopping_cart.theme'  {{ '%}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/cart_summary.theme'  {{ 'with context %}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/item_in_cart_template.theme'  {{ '%}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_price_render_template.theme'  {{ '%}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_calculator_render_template.theme'  {{ '%}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_calculator_method_render_template.theme'  {{ '%}' }}
@@ -23,19 +23,6 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 {{ '{% include' }}  '{{themeDir}}/large/underscore/seller_container_template.theme'  {{ '%}' }}
 
 {% raw %}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -180,12 +167,12 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 					<span class="sellerContainer showWithOrder">
 						<span class="loading"></span>
 						<span class="sellerRenderContainer" omni-tagName="div" omni-className="sellerContainer" omni-template_id="#seller_container_template">
-						<h2>Lista</h2>
+						
 						</span>
 					</span>
 				</div>
 
-				<div class="col-lg-4 col-md-48 cartShoppingContainer showWithOrder" tagName="div" className="panel panel-primary" omni-template_id="#cart_shopping_id">
+				<div class="col-lg-4 col-md-48 cartShoppingSummaryContainer showWithOrder" tagName="div" className="panel panel-primary" omni-template_id="#cart_shopping_id">
 				</div>
 
 

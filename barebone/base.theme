@@ -10,6 +10,12 @@
 
 <style type="text/css">
   
+.updating :{
+  height: 128px,
+  width:128px;
+  background-image: url("{{theme_cdn_dir}}/static/img/loading.gif") no-repeat center;
+}
+
 li.showIfDisconnected , li.showIfConnected, li.showWithOrder {
   display: none;
 }

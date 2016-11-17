@@ -1,8 +1,24 @@
 <script type="text/template" id="seller_container_template">
 
-<h1><%- sellerName %></h1>
-<span>
-	Lista de itens da loja: <%- sellerName %>
-</span>
 
+<div class="panel panel-primary cartContainer">
+	<div class="panel-heading">
+		<h3 class="panel-title">Itens remetidos por <%- sellerName %></h3>
+	</div>
+<div class="panel-body">
+
+		<table class="table table-hover table-striped cartRenderContainer" omni-tagName="tr" className="item_in_cart" omni-template_id="#item_in_cart_id">
+			<tr>
+			<td>Ações</td>
+			<td></td>
+			<td>Item</td>
+			<td>Valor Unitário</td>
+			<td>Qt</td>
+			<td>SubTotal</td>
+			</tr>
+
+			
+		</table>					
+</div>
+</div>
 </script>

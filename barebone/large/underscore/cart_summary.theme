@@ -6,10 +6,7 @@
     <h3 class="panel-title">Resumo do pedido</h3>
     </div>
     <div class="panel-body">
-      <span class="updating">
-      <img width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
-      <hr>
-      </span>
+      <span class="updating"></span>
 
       <span class="info">
       <dl class="dl-horizontal">
