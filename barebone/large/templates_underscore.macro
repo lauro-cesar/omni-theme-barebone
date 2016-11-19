@@ -6,7 +6,7 @@
 
 {% macro buy_buttons() %}
     <a class="btn btn-block btn-success btn-lg omni_add_to_cart <%= (!inCart) ? 'show' : 'hidden'%> omni-action" role="button">Adicionar ao pedido</a>
-    <a class="btn btn-block btn-success btn-lg omni_go_to_cart_ <%= (inCart) ? 'show' : 'hidden'%> omni-action" role="button" href="/cart">Concluir pedido</a>
+    <a class="btn btn-block btn-success btn-lg omni_go_to_cart <%= (inCart) ? 'show' : 'hidden'%> omni-action" role="button">Concluir pedido</a>
     <a class="btn btn-block btn-warning btn-lg omni_remove_from_cart <%= (inCart) ? 'show' : 'hidden'%> omni-action" role="button">Remover do carrinho</a>
 {% endmacro %}
 

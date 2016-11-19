@@ -20,7 +20,7 @@
   </div>
 </td>
 <td><img class="media-object"  width=64px height=64px src="/photos/best_image/<%- adID %>/64/"></td>
-<td><%- adTitle %> </td>
+<td><%- adTitle %></td>
 <td><%- itemPriceLabel %></td>
 <td><%- itemQT %></td>
 <td><%- itemSubTotal %></td>

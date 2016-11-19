@@ -12,7 +12,6 @@
 Usando includes para melhor leitura do codigo e manutencao dos templates
 #}
 
-{{ '{% include' }}  '{{themeDir}}/large/underscore/cart_seller_template.theme'  {{ '%}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/cart_summary.theme'  {{ 'with context %}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/item_in_cart_template.theme'  {{ '%}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_price_render_template.theme'  {{ '%}' }}
@@ -103,6 +102,8 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 			    </h4>
 		    </div>
 		    <!-- End logo -->
+
+
 		    <div class="separator"></div>
 		    <!-- Departments -->
 
@@ -128,7 +129,7 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
         <div class="col-md-9 col-lg-9 minSize">
             <div class="row">
 	            <div class="pages" id=page-errorPage>
-	            Some Error occured...
+	            	Some Error occured...
 	            </div>
 			</div>
 
@@ -153,34 +154,46 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 			<!-- Page Detail  -->
 			<div class="pages minSize" id="page-detailPage"></div>
 			<!-- End Page Detail -->
-
-			<!-- Start Page Order  -->
-			<div class="pages minSize " id="page-cartPage">
-
-
-
-
-
-			<div class="row">
-
-				<div class="col-md-8 col-lg-8">
-					<span class="sellerContainer showWithOrder">
-						<span class="loading"></span>
-						<span class="sellerRenderContainer" omni-tagName="div" omni-className="sellerContainer" omni-template_id="#seller_container_template">
-						
-						</span>
-					</span>
+			<!-- Page Detail  -->
+			
+			
+			
+			<!-- Essa pagina vai receber conteudo dinamico, vamos criar um view e model para ela na sequencia.. -->
+			<div class="pages minSize" id="page-cartError">
+				<div class="well">
+				<h3>Verifique seu pedido</h3>
+				<p>
+				Por favor, <a class="omni-page" href="#cart">verifique</a> novamente os dados preenchidos em seu pedido!
+				</p>
 				</div>
-
-				<div class="col-lg-4 col-md-48 cartShoppingSummaryContainer showWithOrder" tagName="div" className="panel panel-primary" omni-template_id="#cart_shopping_id">
-				</div>
-
-
-			</div>
 			</div>
 			
 
-			<!-- Stop Page Order -->
+			<!-- Start Page CART  -->
+			<div class="pages minSize " id="page-cartPage">
+
+				<div class="row">
+
+					<div class="col-md-8 col-lg-8">
+						<div class="panel panel-primary">
+					    	<div class="panel-heading">
+		    					<h3 class="panel-title">Pedido em andamento</h3>
+		    				</div>
+		    				<div class="panel-body sellerContainer">
+
+								<div class="well showWhenCartEmpty">
+									<h1>Seu carrinho está fazio...</h1>
+								</div>
+
+								<span class="sellerRenderContainer" omni-tagName="div" omni-className="sellerContainer" omni-template_id="#seller_container_template"></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 cartShoppingSummaryContainer showWithOrder" tagName="div" className="panel panel-primary" omni-template_id="#cart_shopping_id">
+					</div>
+				</div>
+			</div>
+			<!-- Stop Page CART -->
 
 
 			<!-- Start Page Account -->

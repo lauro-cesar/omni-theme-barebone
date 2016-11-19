@@ -5,10 +5,9 @@
     <div class="panel-heading">
     <h3 class="panel-title">Resumo do pedido</h3>
     </div>
-    <div class="panel-body">
-      <span class="updating"></span>
+    <div class="panel-body" id="cart_summary">
+      
 
-      <span class="info">
       <dl class="dl-horizontal">
         <span class="<%= (showShippingCalculator) ? 'show' : 'hidden'%>">
           <dt>
@@ -64,10 +63,12 @@
               </h3>
           </dd>
       </dl>
-    </span>
+
+    	<span class="updating">
+      		Atualizando...
+      	</span>
+	<a class="btn btn-block  btn-sm <%= (!isReady) ? 'show' : 'hidden'%>" href="/saveorder/<%- orderID %>">Concluir pedido e pagar</a>
 
     </div>
-    <div class="panel-footer <%= (!isReady) ? 'show' : 'hidden'%>">
-      <a  class="btn btn-primary  btn-sm" href="/cart/checkout" >Pagar</a>
-    </div>
+
 </script>
