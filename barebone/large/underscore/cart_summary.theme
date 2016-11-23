@@ -1,3 +1,4 @@
+{% raw %}
 <script type="text/template" id="cart_shopping_id">
 
 
@@ -7,6 +8,12 @@
     </div>
     <div class="panel-body" id="cart_summary">
       
+
+   
+
+
+
+
 
       <dl class="dl-horizontal">
         <span class="<%= (showShippingCalculator) ? 'show' : 'hidden'%>">
@@ -72,3 +79,4 @@
     </div>
 
 </script>
+{% endraw %}

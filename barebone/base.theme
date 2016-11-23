@@ -5,24 +5,7 @@
 {% import "2.1/omni.macros" as omniMacros with context %}
 
 {%- block OMNI_EXTRA_CSS_HEADER -%}
-
-<style>
-.showIfDisconnected , .showIfConnected, .showWithOrder .showWhenCartEmpty {
-  display: none;
-}
-.pages, .loading, .zipCode_EmptyMessage, .itemQT_EmptyMessage, .account_link {
-  display: none;
-}
-</style>
-<style type="text/css"> 
-.updating :{
-  height: 128px,
-  width:128px;
-  background-image: url("{{theme_cdn_dir}}/static/img/loading.gif") no-repeat center;
-}
-</style>
 <link href="{{theme_cdn_dir}}/{{shop.viewSize}}/static/css/site.css?nocache={{nocache}}" rel="stylesheet">
-
 {%- endblock -%}
 
 

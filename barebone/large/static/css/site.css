@@ -2,12 +2,14 @@
 .separator {
 	height: 20px;
 }
-.catalogContainer {
-	min-height: 800px;
+
+#terms_of_use_container {
+  height: 450px;
+  overflow: scroll;
 }
 
-.account_link {
-  display: none;
+.catalogContainer {
+	min-height: 800px;
 }
 
 .thumbnails {

@@ -1,4 +1,4 @@
-
+{% raw %}
 <script type="text/template" id="shipping_price_render_template">
 
 <% if(isAvailable) { %>
@@ -32,3 +32,4 @@ Prazo estimado após postagem
   </span>
 
 </script>
+{% endraw %}

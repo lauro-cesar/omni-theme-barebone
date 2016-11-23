@@ -1,0 +1,14 @@
+{% raw %}
+{% macro checkoutStepsContainer() %}
+<span class="showWithOrder">
+	<div class="cartShoppingSummaryContainer " tagName="div" className="panel panel-primary" omni-template_id="#cart_shopping_id"></div>
+	<div class="panel panel-primary checkoutStepsContainer">
+		<div class="panel-heading " >
+		    <h3 class="panel-title">Passos do pedido</h3>
+		</div>
+	<div class="panel-body checkoutStepsRenderContainer" tagName="div" className="btn" omni-template_id="#checkout_steps_template"></div>
+	</div>
+</span>
+{% endmacro %}
+
+{% endraw %}

@@ -1,3 +1,4 @@
+{% raw %}
 <script type="text/template" id="seller_container_template">
 
 
@@ -17,21 +18,8 @@
 		<td>SubTotal</td>
 		</tr>
 	</table>
-
-<p class="verysmall">
-	Configurações dos itens remetidos por <%- sellerName %>.
-	<table class="table">
-		<tr>
-		<td></td>
-		<td></td>
-		<td>Item</td>
-		<td>Valor Unitário</td>
-		<td>Qt</td>
-		<td>SubTotal</td>
-		</tr>
-	</table>
-</p>
 </div>
 </div>
 <hr>
 </script>
+{% endraw %}

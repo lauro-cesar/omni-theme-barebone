@@ -1,6 +1,5 @@
+{% raw %}
 <script type="text/template" id="shipping_calculator_method_render_template"> 
-
-
 
 <div class="panel panel-primary">
   <div class="panel-heading">
@@ -12,11 +11,5 @@
    </span>
   </div>
 </div>
-
-
-
-
-
-
-
 </script>
+{% endraw %}

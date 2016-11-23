@@ -1,6 +1,6 @@
 {{ '{% extends' }}  "{{themeDir}}/base.theme" {{ '%}' }}
 {% raw %} {% import {% endraw %} "{{themeDir}}/large/templates_underscore.macro" {% raw %} as underscoreTemplates with context %} {% endraw %}
-
+{% raw %} {% import {% endraw %} "{{themeDir}}/large/templates_jinja.macro" {% raw %} as jinjaLargeTemplates with context %} {% endraw %}
 
 {% raw %}
 {%- block OMNI_DOCUMENT_BODY_HEADER -%}
@@ -12,14 +12,17 @@
 Usando includes para melhor leitura do codigo e manutencao dos templates
 #}
 
+
+{{ '{% include' }}  '{{themeDir}}/large/underscore/customer_container_template.theme'  {{ 'with context %}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/checkout_steps_template.theme'  {{ 'with context %}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/cart_summary.theme'  {{ 'with context %}' }}
-{{ '{% include' }}  '{{themeDir}}/large/underscore/item_in_cart_template.theme'  {{ '%}' }}
-{{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_price_render_template.theme'  {{ '%}' }}
-{{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_calculator_render_template.theme'  {{ '%}' }}
-{{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_calculator_method_render_template.theme'  {{ '%}' }}
-{{ '{% include' }}  '{{themeDir}}/large/underscore/user_account_welcome_link.theme'  {{ '%}' }}
-{{ '{% include' }}  '{{themeDir}}/large/underscore/user_account_widget.theme'  {{ '%}' }}
-{{ '{% include' }}  '{{themeDir}}/large/underscore/seller_container_template.theme'  {{ '%}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/item_in_cart_template.theme'   {{ 'with context %}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_price_render_template.theme'  {{ 'with context %}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_calculator_render_template.theme'   {{ 'with context %}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_calculator_method_render_template.theme'   {{ 'with context %}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/user_account_welcome_link.theme'   {{ 'with context %}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/user_account_widget.theme'  {{ 'with context %}' }}
+{{ '{% include' }}  '{{themeDir}}/large/underscore/seller_container_template.theme'   {{ 'with context %}' }}
 
 {% raw %}
 
@@ -81,7 +84,6 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 
 
 <!-- End printing javascript underscore Templates -->
-
 {{super()}}
 {% endblock %}
 
@@ -102,8 +104,6 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 			    </h4>
 		    </div>
 		    <!-- End logo -->
-
-
 		    <div class="separator"></div>
 		    <!-- Departments -->
 
@@ -158,23 +158,61 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 			
 			
 			
-			<!-- Essa pagina vai receber conteudo dinamico, vamos criar um view e model para ela na sequencia.. -->
-			<div class="pages minSize" id="page-cartError">
-				<div class="well">
-				<h3>Verifique seu pedido</h3>
-				<p>
-				Por favor, <a class="omni-page" href="#cart">verifique</a> novamente os dados preenchidos em seu pedido!
-				</p>
-				</div>
-			</div>
+
 			
 
 			<!-- Start Page CART  -->
 			<div class="pages minSize " id="page-cartPage">
-
 				<div class="row">
-
 					<div class="col-md-8 col-lg-8">
+
+					<span class="checkoutStepsContainer showWithOrder">
+						<div class="checkoutStepsRenderContainer btn-group" role="group" tagName="div" className="btn-group" omni-template_id="#checkout_steps_top_template"></div>
+					</span>
+
+					<div class="separator"></div>
+
+					<!-- Start SubPages -->
+					<!-- Essa pagina vai receber conteudo dinamico, vamos criar um view e model para ela na sequencia.. -->
+					<div class="subpages" id="cart-error">
+						<div class="well">
+						<h3>Verifique seu pedido</h3>
+						<p>
+						Por favor, <a class="omni-page" href="#cart">verifique</a> novamente os dados preenchidos em seu pedido!
+						</p>
+						</div>
+					</div>
+
+					<div class="subpages" id="cart-terms_of_use">
+						<div class="panel panel-primary">
+					    	<div class="panel-heading">
+		    					<h3 class="panel-title">Termos de uso</h3>
+		    				</div>
+		    				<div class="panel-body">
+
+								<span class="termsOfUseRenderContainer" omni-tagName="div" omni-className="form-control" omni-template_id="#terms_of_use_template">
+									
+									Formulario aceite termos de uso...
+
+								</span>
+								<h1>Termos de uso</h1>
+								<div id="terms_of_use_container">
+								   	<span class="loading">
+							      		Carregando...
+							      	</span>
+								</div>
+
+
+
+
+							
+							</div>
+						</div>
+					</div>
+					
+
+
+					<div class="subpages" id="cart-landing">
 						<div class="panel panel-primary">
 					    	<div class="panel-heading">
 		    					<h3 class="panel-title">Pedido em andamento</h3>
@@ -189,7 +227,45 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-4 cartShoppingSummaryContainer showWithOrder" tagName="div" className="panel panel-primary" omni-template_id="#cart_shopping_id">
+					
+					<div class="subpages" id="cart-customer">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">Dados de contato</h3>
+							</div>
+							<div class="panel-body customerRenderContainer" omni-tagName="div" omni-className="customerContainer" omni-template_id="#customer_container_template"></div>
+						</div>
+					</div>
+
+					<div class="subpages" id="cart-customer_verify">
+					formulario de verificacao do email
+					</div>
+
+					<div class="subpages" id="cart-shipping_address">
+					Endereço de entrega
+					</div>
+
+
+
+					<div class="subpages" id="cart-shipping-method">
+					Tipo de frete
+					</div>
+
+	
+					
+					<div class="subpages" id="cart-checkout">
+					Formulario de revisão e confirmação de pedido
+					</div>
+					
+
+					
+
+
+
+
+					</div>
+					<div class="col-lg-4 col-md-4">
+					{{ jinjaLargeTemplates.checkoutStepsContainer() }}
 					</div>
 				</div>
 			</div>

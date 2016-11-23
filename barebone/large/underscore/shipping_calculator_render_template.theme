@@ -1,3 +1,4 @@
+{% raw %}
 <script type="text/template" id="shipping_calculator_render_template">
 <form class="form-horizontal" name="formCep_<%- id %>">
   <div class="form-group">
@@ -14,6 +15,12 @@
     </div>
 
   </div>
+<!-- <div class="checkbox">
+    <label>
+      <input type="checkbox" name="saveZipCode"  checked> Salvar o CEP como padrão.
+    </label>
+  </div> -->
+
 
   <div class="form-group">
     <label  class="col-sm-4 control-label">Qt itens</label>
@@ -48,6 +55,6 @@
   Carregando estimativas de frete.
   <img width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
   </span>
-
 </script>
+{% endraw %}
 
