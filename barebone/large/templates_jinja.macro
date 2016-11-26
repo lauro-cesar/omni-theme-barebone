@@ -6,7 +6,8 @@
 		<div class="panel-heading " >
 		    <h3 class="panel-title">Passos do pedido</h3>
 		</div>
-	<div class="panel-body checkoutStepsRenderContainer" tagName="div" className="btn" omni-template_id="#checkout_steps_template"></div>
+		
+	<div class="panel-body checkoutStepsRenderContainer" tagName="span" className="span-button" omni-template_id="#checkout_steps_template"></div>
 	</div>
 </span>
 {% endmacro %}

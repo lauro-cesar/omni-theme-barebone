@@ -77,6 +77,10 @@
 	<a class="btn btn-block  btn-sm <%= (!isReady) ? 'show' : 'hidden'%>" href="/saveorder/<%- orderID %>">Concluir pedido e pagar</a>
 
     </div>
+<span class="loading">
+<hr>
+	<img width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
+</span>
 
 </script>
 {% endraw %}

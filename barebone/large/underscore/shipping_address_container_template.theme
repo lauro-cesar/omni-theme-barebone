@@ -1,0 +1,83 @@
+{% raw %}
+<script type="text/template" id="shipping_address_container_template">
+<form name="shipping-address">
+  <div>
+    <h4> 1 - Nome da rua</h4>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control " name="streetName" id="streetName" placeholder="<%- streetName %>" value="<%- streetName %>"  >
+    <p class="help-block">Preencha com o nome de sua rua.</p>
+  </div>
+
+  <div>
+    <h4> 2 - Número</h4>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control " name="streetNumber" id="streetNumber" placeholder="<%- streetNumber %>" value="<%- streetNumber %>"  >
+    <p class="help-block">Preencha com o número do local.</p>
+  </div>
+
+  <div>
+    <h4> 3 - Apto ou sala</h4>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control " name="suite" id="suite" placeholder="<%- suite %>" value="<%- suite %>"  >
+    <p class="help-block">Preencha com o número da Sala ou apto.</p>
+  </div>
+
+  <div>
+    <h4> 4 - Bairro</h4>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control " name="districtName" id="districtName" placeholder="<%- districtName %>" value="<%- districtName %>"  >
+    <p class="help-block">Preencha com o Bairro.</p>
+  </div>
+
+
+  <div>
+    <h4> 5 - Cidade</h4>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control " name="city" id="city" placeholder="<%- city %>" value="<%- city %>"  >
+    <p class="help-block">Preencha com o nome da Cidade.</p>
+  </div>
+
+  <div>
+    <h4> 6 - Estado</h4>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control " name="state" id="state" placeholder="<%- state %>" value="<%- state %>"  >
+    <p class="help-block">Preencha com o nome do Estado.</p>
+  </div>
+
+ <div>
+    <h4> 7 - CEP</h4>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control " name="zipCode" id="zipCode" placeholder="<%- zipCode %>" value="<%- zipCode %>"  >
+    <p class="help-block">Preencha com o CEP.</p>
+  </div>
+
+
+   <div>
+    <h4> 8 - Complemento</h4>
+  </div>
+  <div class="form-group">
+ 	 <textarea class="form-control" rows="3" name="extraInfo" id="extraInfo"><%- extraInfo %></textarea>
+    <p class="help-block">Preencha com o CEP.</p>
+  </div>
+  
+</form>
+
+
+
+<span>
+  <a  class="btn btn-primary save" role="button">Salvar endereço de entrega</a>
+</span>
+
+<span class="loading">
+	<img width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
+</span>
+
+</script>
+{% endraw %}

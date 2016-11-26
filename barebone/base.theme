@@ -9,7 +9,7 @@
 {%- endblock -%}
 
 
-
+<!-- The page Title is later changed by a  javascript app -->
 {% block OMNI_DOCUMENT_TITLE %}
 {{ shop.shopName }} {{ shop.shopSlogan}}
 {% endblock %}
@@ -47,20 +47,8 @@
             {% endif %}
       </ul>
       <ul class="nav navbar-nav navbar-right" id="account_links">
-      <!-- 
-      
-      Start this links hidden, let omniApp change visibility  
-
-      Links Keys:
-      account_home,account_login,account_create,account_logout,account_order,account_orders
-      
-      Links helper classes:
-      showIfConnected, showWithOrder ,showIfDisconnected
-
-      -->
         {% if shop.links['account'] %}
         {% set links=shop.links['account'].itens %}
-          
           <!-- Pagina do pedido atual, o checkout é realizado nessa página -->
           
           <li class="userAccountContainer showIfConnected" tagName="a" className="item" omni-user_account_template_id="#user_account_welcome_link"></li>

@@ -1,6 +1,8 @@
 {% raw %}
 <script type="text/template" id="customer_container_template">
-<form id="form_customer">
+
+
+<form name="customer-form">
   <div>
     <h4> 1 -  Nome completo</h4>
   </div>
@@ -39,6 +41,10 @@
   <a  class="btn btn-primary save" role="button">Salvar dados de contato</a>
 </span>
 
+<span class="loading">
+<hr>
+	<img width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
+</span>
 
 
 

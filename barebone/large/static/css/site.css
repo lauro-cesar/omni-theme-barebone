@@ -3,6 +3,11 @@
 	height: 20px;
 }
 
+span.botao_span{
+  padding: 3px;
+}
+
+
 #terms_of_use_container {
   height: 450px;
   overflow: scroll;

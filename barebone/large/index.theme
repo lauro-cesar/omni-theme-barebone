@@ -13,6 +13,7 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 #}
 
 
+{{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_address_container_template.theme'  {{ 'with context %}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/customer_container_template.theme'  {{ 'with context %}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/checkout_steps_template.theme'  {{ 'with context %}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/cart_summary.theme'  {{ 'with context %}' }}
@@ -233,7 +234,9 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 							<div class="panel-heading">
 								<h3 class="panel-title">Dados de contato</h3>
 							</div>
-							<div class="panel-body customerRenderContainer" omni-tagName="div" omni-className="customerContainer" omni-template_id="#customer_container_template"></div>
+							<div class="panel-body customerRenderContainer" omni-tagName="div" omni-className="customerContainer" omni-template_id="#customer_container_template">
+
+							</div>
 						</div>
 					</div>
 
@@ -242,13 +245,25 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 					</div>
 
 					<div class="subpages" id="cart-shipping_address">
-					Endereço de entrega
+			
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">Dados de contato</h3>
+							</div>
+							<div class="panel-body shippingAddressRenderContainer" omni-tagName="div" omni-className="shippingAddressContainer" omni-template_id="#shipping_address_container_template">
+							</div>
+						</div>
+
+					</div>
+
+					
+					<div class="subpages" id="cart-delivery_method">
+						Cálculo de frete
 					</div>
 
 
-
-					<div class="subpages" id="cart-shipping-method">
-					Tipo de frete
+					<div class="subpages" id="cart-payment_method">
+						Meios de pagamentos disponiveis
 					</div>
 
 	

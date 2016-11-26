@@ -1,24 +1,18 @@
 {% raw %}
 <script type="text/template" id="checkout_steps_template">
+	
+
 	<% if( type  == "step" )  { %>
-	<button itemID="<%- itemID %>" type="button" href="<%- uri %>" class="btn btn-lg <%= (done === 'true') ? 'btn-success' : 'btn-danger'%>   btn-block omni-sub-page <%- cssClass %> " role=button><%- label  %> </button>
-	<% } else { %>
-	<button type="button" class="btn btn-default" aria-label="right">
-  		<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-	</button>
+	<button itemID="<%- id %>" type="button" href="<%- uri %>" class="btn btn-block btn-lg <%= (done === 'true') ? 'btn-success' : 'btn-danger'%>   btn-block omni-sub-page <%- cssClass %> " role=button><%- label  %> </button>
 	<% } %>
-	<br>
+
 </script>
 
 
 <script type="text/template" id="checkout_steps_top_template">
 	
 	<% if( type  == "step" )  { %>
-		<button itemID="<%- itemID %>" type="button" href="<%- uri %>" class="btn btn-sm <%= (done === 'true') ? 'btn-success' : 'btn-danger'%>  omni-sub-page <%- cssClass %> " role=button><%- label  %> </button>
-	<% } else { %>
-		<button type="button" class="btn btn-default" aria-label="down">
-	  		<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
-		</button>
+		<button itemID="<%- id %>" type="button" href="<%- uri %>" class="btn btn-sm <%= (done === 'true') ? 'btn-success' : 'btn-danger'%>  omni-sub-page <%- cssClass %> " role=button><%- label  %> </button>
 	<% } %>
 
 
