@@ -1,0 +1,61 @@
+{% raw %}
+
+{% extends "2.1/omni.theme" %}
+{% import "2.1/omni.macros" as omniMacros with context %}
+
+{%- block OMNI_EXTRA_CSS_HEADER -%}
+
+
+<link href="{{theme_cdn_dir}}/{{shop.viewSize}}/static/css/site.css?nocache={{nocache}}" rel="stylesheet">
+
+{%- endblock -%}
+
+
+
+{% block OMNI_DOCUMENT_TITLE %}
+{{ shop.shopName }} {{ shop.shopSlogan}}
+{% endblock %}
+
+<!-- wee split the page in three main rows (OMNI_DOCUMENT_BODY_HEADER, OMNI_DOCUMENT_BODY adn OMNI_DOCUMENT_BODY_FOOTER) -->
+
+
+
+
+<!-- This block represent the top of a page -->
+{%- block OMNI_DOCUMENT_BODY_HEADER -%}
+
+Header
+
+{%- endblock -%}
+
+
+
+ <!-- This block represent the center of a page -->
+{% block OMNI_DOCUMENT_BODY %}
+
+Corpo
+
+{%- endblock -%}
+
+
+<!-- This block represent the bottom of a page -->
+{%- block OMNI_DOCUMENT_BODY_FOOTER -%}
+
+Footer
+
+{%- endblock -%}
+
+
+{%- block OMNI_EXTRA_FOOTER_JS -%}
+  <script>
+  $( document ).ready(function() {
+    var omniSetup = {
+      debugMode:true,
+      shopBaseURL:'https://{{shop.shopFQDN}}/'
+    };
+    new OmniMainView(omniSetup);
+  })
+  </script>
+{%- endblock -%}
+
+{% endraw %}
