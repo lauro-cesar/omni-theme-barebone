@@ -1,0 +1,16 @@
+{% raw %}
+<script type="text/template" id="cart_delivery_calculator_template">
+
+<div class="panel">
+<div class="panel-body">
+<h3 class="text-info">
+	<%- sellerName %>
+</h3>
+
+Lista de opções de frete
+
+
+</div>
+</div>
+</script>
+{% endraw %}

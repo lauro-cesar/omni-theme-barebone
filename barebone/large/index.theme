@@ -13,6 +13,7 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 #}
 
 
+{{ '{% include' }}  '{{themeDir}}/large/underscore/cart_delivery_calculator_template.theme'  {{ 'with context %}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/shipping_address_container_template.theme'  {{ 'with context %}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/customer_container_template.theme'  {{ 'with context %}' }}
 {{ '{% include' }}  '{{themeDir}}/large/underscore/checkout_steps_template.theme'  {{ 'with context %}' }}
@@ -236,6 +237,8 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 							</div>
 							<div class="panel-body customerRenderContainer" omni-tagName="div" omni-className="customerContainer" omni-template_id="#customer_container_template">
 
+								<img class="loading" width="16px" src="{{theme_cdn_dir}}/static/img/loading.gif">
+
 							</div>
 						</div>
 					</div>
@@ -248,9 +251,10 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 			
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h3 class="panel-title">Dados de contato</h3>
+								<h3 class="panel-title">Endereço de entrega</h3>
 							</div>
 							<div class="panel-body shippingAddressRenderContainer" omni-tagName="div" omni-className="shippingAddressContainer" omni-template_id="#shipping_address_container_template">
+							<img class="loading" width="16px" src="{{theme_cdn_dir}}/static/img/loading.gif">
 							</div>
 						</div>
 
@@ -258,7 +262,21 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
 
 					
 					<div class="subpages" id="cart-delivery_method">
-						Cálculo de frete
+
+						<div class="panel panel-primary">
+					    	<div class="panel-heading">
+		    					<h3 class="panel-title">Calculo de frete</h3>
+		    				</div>
+		    				<div class="panel-body cartDeliveryCalculatorContainer">
+								<div class="well showWhenCartEmpty">
+									<h1>Seu carrinho está fazio...</h1>
+								</div>
+
+								<span class="sellerRenderContainer" omni-tagName="div" omni-className="sellerContainer" omni-template_id="#cart_delivery_calculator_template"></span>
+							</div>
+						</div>
+		
+
 					</div>
 
 
@@ -322,8 +340,11 @@ Usando includes para melhor leitura do codigo e manutencao dos templates
                          
                          <span class="catalogControlInformation"></span>
                          <span class="catalogControlNavigation"></span>
-            			
 			             <div class="catalogContainer row"></div>
+			             <span class="catalogControlNavigation"></span>
+			              <span class="catalogControlInformation"></span>
+			             
+
 			    </div>
 			</div>
 			<!-- end Maincatalogo -->

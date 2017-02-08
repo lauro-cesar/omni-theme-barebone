@@ -1,9 +1,14 @@
 {% raw %}
 <script type="text/template" id="seller_container_template">
 
+<div class="alert alert-info loading center-block" role="alert">
+	<img class="pull-right" width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
+	<span>
+	<h4>Carregando...</h4>
+	</span>
+</div>
 
 <div class="panel cartContainer">
-
 <div class="panel-body">
 <h3 class="text-info">
 	<%- sellerName %>
@@ -20,6 +25,5 @@
 	</table>
 </div>
 </div>
-<hr>
 </script>
 {% endraw %}

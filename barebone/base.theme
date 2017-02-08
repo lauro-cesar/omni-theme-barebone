@@ -162,19 +162,14 @@
 {%- endblock -%}
 
 {%- block OMNI_EXTRA_FOOTER_JS -%}
-  
-
-
   <script>
   $( document ).ready(function() {
-
     var omniSetup = {
-      debugMode:true
+      debugMode:true,
+      shopBaseURL:'https://{{shop.shopFQDN}}/'
     };
     new OmniMainView(omniSetup);
   })
-
-
   </script>
 {%- endblock -%}
 

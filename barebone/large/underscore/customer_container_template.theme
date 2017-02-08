@@ -1,6 +1,12 @@
 {% raw %}
 <script type="text/template" id="customer_container_template">
 
+<div class="alert alert-info loading center-block" role="alert">
+	<img class="pull-right" width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
+	<span>
+	<h4>Carregando...</h4>
+	</span>
+</div>
 
 <form name="customer-form">
   <div>
@@ -40,16 +46,6 @@
 <span>
   <a  class="btn btn-primary save" role="button">Salvar dados de contato</a>
 </span>
-
-<span class="loading">
-<hr>
-	<img width="32px" src="{{theme_cdn_dir}}/static/img/loading.gif">
-</span>
-
-
-
-
-
 
 </script>
 {% endraw %}

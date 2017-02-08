@@ -2,8 +2,6 @@
 
 
 
-
-
 {% macro buy_buttons() %}
     <a class="btn btn-block btn-success btn-lg omni_add_to_cart <%= (!inCart) ? 'show' : 'hidden'%> omni-action" role="button">Adicionar ao pedido</a>
     <a class="btn btn-block btn-success btn-lg omni_go_to_cart <%= (inCart) ? 'show' : 'hidden'%> omni-action" role="button">Concluir pedido</a>
@@ -47,31 +45,13 @@
 
 {% if type =="default" %}
 
-
-
 <% if( total > 0 ) { %>
-<nav aria-label="page navigation">
-  <ul class="pagination">
-    
-
-    <li class="<%= (!hasPrevious) ? 'disabled' : '' %>">
-      <a class="previus_page " aria-label="Anterior">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    
-      <% _.each( _.range(0,total,limit), function(element, index, list) { %>
-       <li class="<%= (page == (index + 1)) ? 'active' : 'normal' %>"><a class="go_to_page " page-offset="<%= (limit * index) %>"><%= (index + 1) %>  </a></li>
-      <% } ) %>  
-
-
-    <li class="<%= (!hasNext) ? 'disabled' : '' %>">
-      <a class="next_page " aria-label="Próxima página">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-
+<nav aria-label="page navigation">  
+  <ul class="pager">
+    <li class="previous <%= (!hasPrevious) ? 'disabled' : '' %>"><a class="previus_page" href="#"><span aria-hidden="true">&larr;</span>Anterior</a></li>
+    <li class="next <%= (!hasNext) ? 'disabled' : '' %>"><a class="next_page " href="#">Próximos <span aria-hidden="true">&rarr;</span></a></li>
   </ul>
+
 </nav>
 <% } %>
 {% endif %}
