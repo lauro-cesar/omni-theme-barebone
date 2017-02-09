@@ -1,13 +1,10 @@
 {% raw %}
-
 {% extends "2.1/omni.theme" %}
 {% import "2.1/omni.macros" as omniMacros with context %}
 
+
 {%- block OMNI_EXTRA_CSS_HEADER -%}
-
-
 <link href="{{theme_cdn_dir}}/{{shop.viewSize}}/static/css/site.css?nocache={{nocache}}" rel="stylesheet">
-
 {%- endblock -%}
 
 
@@ -31,9 +28,12 @@ Header
 
 
  <!-- This block represent the center of a page -->
+
 {% block OMNI_DOCUMENT_BODY %}
 
-Corpo
+
+
+
 
 {%- endblock -%}
 
